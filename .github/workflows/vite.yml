@@ -27,7 +27,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Upload the generated dist folder
+          path: './build/client' # Upload the generated dist folder
 
   deploy:
     environment:
