@@ -41,7 +41,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<div id="body">{children}</div>
 				<ScrollRestoration />
 				<Scripts />
-				<Navbar />
+				{/* <Navbar /> */}
 				<style>
 					@import
 					url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');

@@ -76,18 +76,22 @@ export default function HeroIndex() {
       }, []);
 
     return (
-        <div className={`h-screen relative gap-4 overflow-clip`}>
-        <div className="h-full flex flex-col justify-center py-8">
-          <div className="flex flex-col">
-            <div className="text-8xl font-bold">Ahmd Alfazh</div>
-            <div>
-              I'm a FrontEnd Developer Experience in React, NextJs, and Tailwind CSS.
-            </div>
-          </div>
-        </div>
-        <div>
-          <canvas  ref={canvasRef} className=" absolute top-0 left-0 w-full h-full mask-b-from-0% mask-l-from-10" />
-        </div>
-      </div>
-    )
+			<div className={`h-screen relative gap-4 overflow-clip`}>
+				<div className="h-full flex flex-col justify-center py-8">
+					<div className="flex flex-col z-50 bg-slate-50 w-fit">
+						<div className="text-8xl font-bold">Ahmd Alfazh</div>
+						<div>
+							I'm a FrontEnd Developer Experience in React, NextJs, and Tailwind
+							CSS.
+						</div>
+					</div>
+				</div>
+				<div>
+					<canvas
+						ref={canvasRef}
+						className=" absolute top-0 left-0 w-full h-full mask-b-from-0% mask-r-from-10%"
+					/>
+				</div>
+			</div>
+		);
 }
