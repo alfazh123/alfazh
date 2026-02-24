@@ -15,40 +15,39 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
 	const projects = [
 		{
-			name: "Project 1",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			name: "Image Editor",
+			description:
+				"Image editor web app, built with React and Tailwind CSS. implementation of `rust-editor` package",
+			link: "https://github.com/alfazh123/image-editor",
 		},
 		{
-			name: "Project 2",
+			name: "PathXplorer",
 			description:
-				"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"Mobile app for exploring interest and talent of high school students, built with Kotlin.",
+			link: "https://github.com/PathXplorer-C242-PS289",
 		},
 	];
 
 	const writes = [
 		{
-			title: "Write 1",
-			year: 2023,
-			topics: ["React", "TypeScript", "Web Development"],
-		},
-		{
-			title: "Write 2",
-			year: 2024,
-			topics: ["JavaScript", "Frontend", "Programming"],
+			title: "Build WASM package with Rust",
+			year: 2025,
+			topics: ["WASM", "Rust", "Web Development"],
+			link: "https://medium.com/@alfazh291/built-wasm-package-with-rust-99c3c76f273e",
 		},
 	];
 
 	const contacts = [
 		{
-			type: <GoMail className="h-6 w-6" />,
-			value: "alfazh.work@gmail.com",
+			type: "contacts/mail.png",
+			value: "mailto:alfazh.work@gmail.com",
 		},
 		{
-			type: <SiLinkedin className="h-6 w-6" />,
+			type: "contacts/linkedin.png",
 			value: "https://www.linkedin.com/in/ahmd-mufahras-li-alfazh-assardew/",
 		},
 		{
-			type: <VscGithubAlt className="h-6 w-6" />,
+			type: "contacts/github.png",
 			value: "https://github.com/alfazh123",
 		},
 	];
@@ -72,8 +71,11 @@ export default function Home() {
 				</div>
 				<div className="flex flex-col h-fit">
 					{projects.map((project, index) => (
-						<div
+						<a
 							key={index}
+							href={project.link}
+							target="_blank"
+							rel="noopener noreferrer"
 							className="border-b border-gray-300 p-4 rounded-lg flex justify-between items-center">
 							<div>
 								<h3 className="text-2xl font-semibold">{project.name}</h3>
@@ -82,19 +84,22 @@ export default function Home() {
 							<div>
 								<ArrowUpRight className="w-8 h-8" />
 							</div>
-						</div>
+						</a>
 					))}
 				</div>
 			</div>
 
-			<div className="md:max-w-4xl mx-auto p-8 flex flex-col rounded-lg h-[50vh] justify-center">
+			<div className="md:max-w-4xl mx-auto p-8 flex flex-col rounded-lg h-96 justify-center">
 				<div className="rounded-lg w-full justify-center text-center mb-8">
 					<h2 className="text-6xl font-bold mb-4">Selected Writes</h2>
 				</div>
 				<div className="flex flex-col h-fit">
 					{writes.map((write, index) => (
-						<div
+						<a
 							key={index}
+							href={write.link}
+							target="_blank"
+							rel="noopener noreferrer"
 							className="border-b border-gray-300 p-4 rounded-lg flex justify-between items-center">
 							<div>
 								<h3 className="text-2xl font-semibold">{write.title}</h3>
@@ -111,23 +116,29 @@ export default function Home() {
 							<div>
 								<ArrowUpRight className="w-8 h-8" />
 							</div>
-						</div>
+						</a>
 					))}
 				</div>
 			</div>
 
 			{/* Contacs */}
 			<div className="md:max-w-4xl mx-auto p-8 flex flex-col rounded-lg h-[50vh] justify-center">
-				<div className="rounded-lg w-full justify-center text-center mb-8">
-					<h2 className="text-6xl font-bold mb-4">Contacts</h2>
+				<div className="rounded-lg w-full justify-center text-center mb-4">
+					<h2 className="text-6xl font-bold">Contacts</h2>
+					<p className="text-lg">
+						If you want to get in touch 👋, feel free to reach out to me on link
+						below.
+					</p>
 				</div>
 				<div className="flex gap-8 justify-center">
 					{contacts.map((contact, index) => (
-						<div
-							key={index}
-							className="border border-gray-300 w-14 h-14 p-4 rounded-full flex justify-center items-center">
+						<div key={index} className="flex justify-center items-center">
 							<a href={contact.value} target="_blank" rel="noopener noreferrer">
-								{contact.type}
+								<img
+									src={contact.type}
+									alt={`Contact ${index + 1}`}
+									className="w-12 h-12"
+								/>
 							</a>
 						</div>
 					))}
