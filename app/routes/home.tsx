@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import type { Route } from "./+types/home";
 import HeroIndex from "~/components/hero-index";
 import WriteCard from "~/components/write-card";
