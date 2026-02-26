@@ -1,15 +1,10 @@
 import { gsap } from "gsap";
 import { useLocation, useNavigate } from "react-router";
+import { menu } from "~/utils/data";
 
 export default function Navbar() {
 	const navigate = useNavigate();
 	const location = useLocation();
-
-	const menu = [
-		{ name: "Home", icon: "navbar/home.svg", href: "/" },
-		{ name: "About", icon: "navbar/about.svg", href: "/about" },
-		{ name: "Projects", icon: "navbar/project.svg", href: "/projects" },
-	];
 
 	function handleLocationChange(location: string) {
 		const tl = gsap.timeline();

@@ -25,19 +25,25 @@ export const writes = [
 ];
 
 export const contacts = [
-    {
-        type: "contacts/mail.png",
-        label: "alfazh.work@gmail.com",
-        value: "mailto:alfazh.work@gmail.com",
-    },
-    {
-        type: "contacts/linkedin.png",
-        label: "Ahmd Mufahras Li Alfazh Assardew",
-        value: "https://www.linkedin.com/in/ahmd-mufahras-li-alfazh-assardew/",
-    },
-    {
-        type: "contacts/github.png",
-        label: "alfazh123",
-        value: "https://github.com/alfazh123",
-    },
+	{
+		type: "/contacts/mail.png",
+		label: "alfazh.work@gmail.com",
+		value: "mailto:alfazh.work@gmail.com",
+	},
+	{
+		type: "/contacts/linkedin.png",
+		label: "Ahmd Mufahras Li Alfazh Assardew",
+		value: "https://www.linkedin.com/in/ahmd-mufahras-li-alfazh-assardew/",
+	},
+	{
+		type: "/contacts/github.png",
+		label: "alfazh123",
+		value: "https://github.com/alfazh123",
+	},
+];
+
+export const menu = [
+	{ name: "Home", icon: "/navbar/home.svg", href: "/" },
+	{ name: "About", icon: "/navbar/about.svg", href: "/about" },
+	{ name: "Projects", icon: "/navbar/project.svg", href: "/projects" },
 ];
