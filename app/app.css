@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
@@ -18,18 +19,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
-/* For Webkit-based browsers (Chrome, Safari, Opera) */
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-
-/* For IE, Edge, and Firefox */
-.scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
-}
-
 
 html,
 body {
@@ -63,4 +52,30 @@ body {
     transform: translateX(0);
   }
 }
-/* ...existing code... */
+
+/* Loader animations */
+.body-content {
+  opacity: 0;
+}
+
+.loader-dot-1 {
+  animation-delay: 0ms;
+}
+
+.loader-dot-2 {
+  animation-delay: 150ms;
+}
+
+.loader-dot-3 {
+  animation-delay: 300ms;
+}
+
+.loader-container {
+  z-index: 100;
+}
+
+/* code {
+  background-color: #f5f5f5;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+} */

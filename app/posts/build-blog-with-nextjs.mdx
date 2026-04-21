@@ -1,0 +1,216 @@
+---
+title: Build Blog Page using NextJs
+date: 1 June 2024
+tags: [Blog, NextJs]
+---
+
+# Building Blog page with NextJs and MDX
+This page will explain how to build a blog page using NextJs and MDX, Before starting the project, we need to first understand NextJs and MDX. NextJs is a ReactJs framework develeop by Vercel, because NextJs using React for main library so web can use all function from React like React Hook like useState and useEffect. What make different from React is in NextJs we don’t need to think about routing in project, had SEO optimization, support SSR and SSG.
+
+Next what is MDX?, so basically MDx is a combination of Markdown and JSX, so it possible to MDX compiled with JSX or browser, and we can add JSX component to page Markdown.
+
+```md
+---
+title: "Membuat Blog dengan MDX dan Next.js"
+description: "This is the first blog post"
+date: 2024-01-01
+---
+
+# Ini heading dari MDX
+menambahkan komponen alert pada file MDX
+<Component />
+```
+
+But why we use MDX is simply in MDX we can use JSX components on the page and had Markdown format that so easly to write, more complete information can be seen at the [link](https://mdxjs.com/docs/what-is-mdx/). MDX has file structure as in the example above, with `frontMatter` and `main content`. FrontMatter can also be called a file’s metadata, typically consisting of the title, description, date, or author. Meanwhile, the main content represents the file’s content.
+
+## Prequest
+
+Things that need to be prepared for this project include:
+- Install NextJs
+```bash
+npx create-next-app@latest blox-mdx
+cd blox-mdx
+npm install
+npm run dev
+```
+- Install MDX
+```bash
+npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+```
+After install package add code bellow to next.config.mjs file:
+```javascript
+import createMDX from "@next/mdx";
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    // Configure `pageExtensions` to include markdown and MDX files
+    pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+    // Optionally, add any other Next.js config below
+};
+
+const withMDX = createMDX({
+    // Add markdown plugins here, as desired
+});
+
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig);
+```
+- Install gray-matter
+```bash
+npm install gray-matter
+```
+
+## Begin project
+After setup all configuration we can start the project, first make the main blog page that contain list of all content or posts, create a page structure like the example below.
+```bash
+. project/
+  ├── app/
+  │   └── blog/
+  │     └── page.tsx
+  └── posts/
+      ├── blog-one.mdx
+      └── blog-two.mdx
+```
+
+Next step we build function that can return metadata (frontMatter) of posts, In creating a function to get post metadata, you will need help from the fs (file system) package from nodejs. So the function will be like bellow.
+
+```javascript
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+export function getPosts() {
+    // declare directory
+    const dir = path.join(process.cwd(), "posts");
+    const files = fs.readdirSync(dir); // read directory using readdirSync
+    const contentFile = files.map((file) => {
+        return fs.readFileSync(`${dir}/${file}`, "utf8"); // collect files by mapping file in directory that read before
+    });
+    // ...
+
+    // get slug (link) to file
+    const slug = files.map((file) => {
+        const slug = file.replace(".mdx", "");
+        return slug;
+    });
+
+    // get frontMatter and content from file and combine with slug
+    // note: you can set it according to your needs, but the most important thing in this section is to collect the slug (link file) and frontmatter as metadata.
+    let frontMatter = contentFile.map((file, id) => {
+        const {content,data} = matter(file);
+        return {
+            frontMatter: data,
+            content: content,
+            slug: slug[id]
+        };
+    });
+
+
+    return frontMatter;
+}
+```
+
+Next step is display posts in blog page by call the function, collect in variabel, and mapping in component, for example it will write like this.
+
+```javascript
+// pages/blog/page.tsx
+
+export default async function Blog() {
+
+    const postsData = async () => {
+        const posts  = getPosts();
+        return posts ;
+    };
+
+    const files = await postsData();
+
+    return (
+        <section>
+            {posts.map((post) => (
+                <article key={post.slug}>
+                    <h1>{post.frontMatter.title}</h1>
+                    <p>{post.frontMatter.description}</p>
+                    <p>{post.frontMatter.date}</p>
+                </article>
+            ))}
+        </section>
+    );
+}
+```
+
+By writing the code as above, it will produce a display like the following image.
+![Display posts](https://miro.medium.com/v2/resize:fit:786/format:webp/1*Vz0wji2J5MOiFSzuRLHkBg.png "Display posts")
+
+After display posts next step is make detail page for post, the idea is using `[slug]` folder that contain `page.tsx` file. Why we use `[slug]` folder? in NextJs slug has a function for Dynamic Routing, in this context is a parameter like from previous function slug is name of post but write in kebab-case, for example we had post with name “How to use Properly using React Hook” the slug of this page is how-to-properly-using-react-hook”.
+```javascript
+. project/
+  ├── app/
+  │   └── blog/
+  │     └── page.tsx
+  │         └── [slug]/
+  │             └── page.tsx <- detail blog
+  └── posts/
+      ├── blog-one.mdx
+      └── blog-two.mdx
+```
+
+To get exact post in `page.tsx` file we can use slug as parameter for filter posts that return from previous function. For display detail content we can use `MDXRemote` component that provided in NextJs, The code from the file will look like this.
+
+```javascript
+// pages/blog/[slug]/page.tsx
+import { getPosts } from "../../../lib/posts";
+import { MDXRemote } from "next-mdx-remote/rsc";
+
+export default function Blog({ params }: { params: { slug: string } }) {
+    const props = getPost().find((post) => post.slug === params.slug);
+    //...
+    if (!props) {
+        return <div>Post not found</div>;
+    }
+    return (
+        //...
+            <article>
+                <MDXRemote source={props.content} />
+            </article>
+        //...
+    );
+}
+```
+
+![Detail blog](https://miro.medium.com/v2/resize:fit:786/format:webp/1*XEPs_f0PL24leaJbm2QPJQ.png "Detail blog")
+
+From the image, it can be seen that the display does not have the files it should have, such as heading 2 and the block code is all plain text. To fix this problem, you can use the `tailwindss/typogrphy` package. The steps are to install it first, then apply it to the component. Here is an example.
+
+```bash
+# install tailwind typography
+npm install -D @tailwindcss/typography
+```
+
+Next we add plugins tailwindcss/typography in tailwind.config.js file.
+
+```javascript
+// tailwind.config.js
+module.exports = {
+    //...
+    plugins: [require("@tailwindcss/typography")],
+};
+```
+Then add `prose` class in `article` tag in slug page.
+
+```javascript
+// pages/blog/[slug]/page.tsx
+// rest of code
+<article className="prose">
+    <MDXRemote source={props.content} />
+</article>
+// rest of code
+```
+
+![Final result detail blog](https://miro.medium.com/v2/resize:fit:786/format:webp/1*3HxiiS58L9yb_QxBvoCi2w.png "Final result detail blog")
+
+## Source
+- [Repository](https://github.com/alfazh123/blog-mdx)
+- [Demo web](https://blog-mdx-template.vercel.app/)
+- [NexJs MDX configuration](https://nextjs.org/docs/pages/building-your-application/configuring/mdx)
+- [Tailwind typhography](https://tailwindcss.com/blog/tailwindcss-typography)
+- [MDX Documentation](https://mdxjs.com/)
