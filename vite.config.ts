@@ -5,12 +5,14 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import { cloudflare } from "@cloudflare/vite-plugin";
 
 export default defineConfig({
 	plugins: [
 		tailwindcss(),
 		reactRouter(),
 		tsconfigPaths(),
+		cloudflare(),
 		{
 			enforce: "pre",
 			...mdx({

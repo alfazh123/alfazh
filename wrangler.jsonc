@@ -2,6 +2,7 @@
     "name": "alfazh",
     "compatibility_date": "2026-02-23",
     "assets": {
-        "directory": "./build/client",
-    }
+			"directory": "./build/client",
+			"not_found_handling": "single-page-application",
+		}
 }
