@@ -25,14 +25,14 @@ export default function Home() {
 				))}
 			</div>
 
-			<div className="md:max-w-4xl mx-auto md:px-8 px-4 grid md:grid-cols-2 grid-cols-1 rounded-lg justify-center py-20">
+			<div className="md:max-w-4xl mx-auto md:px-8 px-4 grid md:grid-cols-2 grid-cols-1 md:gap-0 gap-14 rounded-lg justify-center py-20">
 				<div className="rounded-lg w-full justify-center mb-8 md:h-80 h-fit">
 					<h2 className="text-6xl font-bold md:mb-4 mb-8">Selected Writes</h2>
 				</div>
 				{writes.map((write, index) => (
 					<div
 						key={index}
-						className={`${index % 2 === 0 ? "md:justify-self-start" : "md:justify-self-end"} flex justify-center`}>
+						className={`${index % 2 === 0 ? "sm:justify-self-start" : "sm:justify-self-end"} w-full h-80 flex justify-center`}>
 						<WriteCard {...write} />
 					</div>
 				))}

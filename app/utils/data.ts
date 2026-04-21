@@ -16,12 +16,18 @@ export const projects = [
 ];
 
 export const writes = [
-    {
-        title: "Build WASM package with Rust",
-        year: 2025,
-        topics: ["WASM", "Rust", "Web Development"],
-        link: "https://medium.com/@alfazh291/built-wasm-package-with-rust-99c3c76f273e",
-    },
+	{
+		title: "Build WASM package with Rust",
+		year: 2025,
+		topics: ["WASM", "Rust", "Web Development"],
+		link: "https://medium.com/@alfazh291/built-wasm-package-with-rust-99c3c76f273e",
+	},
+	{
+		title: "Building Blog page with NextJs and MDX",
+		year: 2025,
+		topics: ["WASM", "Rust", "Web Development"],
+		link: "https://medium.com/@alfazh291/building-blog-page-with-nextjs-and-mdx-50d5643b9d04",
+	},
 ];
 
 export const contacts = [
@@ -46,4 +52,5 @@ export const menu = [
 	{ name: "Home", icon: "/navbar/home.svg", href: "/" },
 	{ name: "About", icon: "/navbar/about.svg", href: "/about" },
 	{ name: "Projects", icon: "/navbar/project.svg", href: "/projects" },
+	{ name: "Blog", icon: "/navbar/blog.svg", href: "/blog" },
 ];

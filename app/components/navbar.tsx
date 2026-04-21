@@ -7,14 +7,25 @@ export default function Navbar() {
 	const location = useLocation();
 
 	function handleLocationChange(location: string) {
-		const tl = gsap.timeline();
+		const tl = gsap.timeline({
+			onComplete: () => {
+				navigate(location);
+			},
+		});
 
-		tl.to("#body", { opacity: 0, duration: 0.5 });
-
-		setTimeout(() => {
-			navigate(location);
-			tl.to("#body", { opacity: 1, duration: 0.5 });
-		}, 1000);
+		tl.to("#body", {
+			opacity: 0,
+			duration: 0.4,
+			ease: "power2.inOut",
+		})
+			.call(() => {
+				navigate(location);
+			})
+			.to("#body", {
+				opacity: 1,
+				duration: 0.4,
+				ease: "power2.inOut",
+			});
 	}
 
 	return (
@@ -28,11 +39,12 @@ export default function Navbar() {
 								className="relative group text-gray-900 hover:underline px-3"
 								onClick={() => handleLocationChange(item.href)}>
 								<img src={item.icon} alt="dot" />
-								{location.pathname === item.href && (
+								{location.pathname.split("/")[1] ===
+									item.href.split("/")[1] && (
 									<img
 										src="/navbar/bg.svg"
 										alt="background"
-										className="absolute -bottom-2 left-1 -z-10 shadow-2xl"
+										className="absolute bottom-1 top-1 left-1 -z-10 shadow-2xl"
 									/>
 								)}
 							</button>
