@@ -18,13 +18,12 @@ export default function DetailPost() {
     }, [slug]);
 
     return (
-        <div className="prose prose-code:before:content-none prose-code:after:content-none prose-img:rounded-lg prose-img:border mt-20 flex flex-col justify-center min-h-screen max-w-4xl w-full mx-auto px-8 mb-20">
-            {/* <h1 className="text-4xl font-bold">Blog</h1> */}
-        
-                    {/* 3. Panggil layaknya komponen React biasa */}
-                    {content}
-            <div className="prose flex flex-col gap-4 mt-20">
-            </div>
-        </div>
-    )
+			<div className="prose prose-p:text-lg prose-p:mb-0 prose-img:mb-0 prose-code:before:content-none prose-code:after:content-none prose-img:rounded-lg prose-img:border mt-20 flex flex-col justify-center min-h-screen max-w-4xl w-full mx-auto px-8 mb-20">
+				{/* <h1 className="text-4xl font-bold">Blog</h1> */}
+
+				{/* 3. Panggil layaknya komponen React biasa */}
+				{content}
+				<div className="prose flex flex-col gap-4 mt-20"></div>
+			</div>
+		);
 }
