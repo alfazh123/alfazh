@@ -1,6 +1,6 @@
 import type { Route } from "./+types/home";
 import HeroIndex from "~/components/hero-index";
-import WriteCard from "~/components/write-card";
+import PostCard from "~/components/post-card";
 import ProjectCard from "~/components/project-card";
 import { projects, writes } from "~/utils/data";
 import PostList from "~/components/post-list";

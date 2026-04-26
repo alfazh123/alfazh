@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PostList from "~/components/post-list";
-import WriteCard from "~/components/write-card";
+import PostCard from "~/components/post-card";
 
 const postsModule = import.meta.glob("../posts/*.mdx", { eager: true });
 
