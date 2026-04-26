@@ -1,0 +1,83 @@
+---
+title: Build WASM package with Rust
+date: 15-12-2025
+tags: [
+    WASM,
+    website,
+    Rust
+]
+---
+
+# Build WASM package with Rust
+
+Website usage in environmental development is now common, like Adobe that used to run only in desktop application now able to run in website environment, another example is Figma, Capcut, Code editor, or Image editor application.
+
+To able run desktop application to website you can use WebAssembly (WASM) langguage programming, Since it was first introduction WebAssembly offer some of benefit as fast technology, secure, and lightweight. Build with low-level programming language wich make possible to incrase efficiency in hight processing. But it doesn't mean WebAssembly can replace JAvaScript from website development programming language but to be a helper in height processing.
+
+## Setup environment delopment
+
+First things first you need to setup some of this app and programming langguage, including:\
+
+1. Visual Studio Code
+2. Rust Langguage
+3. wasm-pack package
+
+For system operatioin writer recommendation is using Linux OS but if you using Windows you can use WSL for development.
+
+To generate WebAssembly file using Rust Langguage we will using help by wasm-pack package that can generate `.wasm` file, in addition generate `.wasm` file it will generate `.js` and `.ts` for bridging between `.wasm` and FrontEnd environment [wasm-pack documentation](https://github.com/wasm-bindgen/wasm-pack).
+
+## Begin Project
+
+First step is setup the project by run command bellow
+
+```bash
+cargo new --lib hello-wasm
+```
+
+Command above use to setup environment project (folder project), in that folder had a file `lib.rs` which is the location for program to be carried out. Next there is file `Cargo.toml` and `Cargo.lock` which is location of dependecies that will be used. Before write the program make sure that adding this dependencies in `Cargo.toml` file like this code bellow.
+
+```toml
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+```
+
+Next we can write simple program as an example we will make function that recieve 2 input and sum two of them as return.
+
+```rust
+// lib.rs
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+pub fn plus(num_one: i32, num_two: i32) -> i32 {
+  let res = num_one + num_two;
+
+  res
+}
+```
+
+Make sure write the `#[wasm_bindgen]` before function this is for marking the where is the funciton that will use in FrontEnd side as `wasm`. After confirming that marking function next step is building and compile file by running command bellow.
+
+```bash
+wasm-pack build --target web
+```
+
+Command above will generate output `/pkg` folder that contain `wasm` file and some of `.js` and `.ts` file. In fact, WebAssembly package that we just buld can be used locally by add `import pacakge_name from '/pkg/pacakge_name.js'` in JavaScript file client browser, but if you want to publish this package you can run command bellow.
+
+```bash
+wasm-pack pack
+wasm-pack publish
+```
+
+> Note : Make sure that you have a npm account and make sure that you had set Two-Factor Authenticator and had access token that enable 2FA. Because when this article write added a security rule that requires both of these to be set before publishing.
+
+If success publish package the command line will look like this.
+
+![Result CLI](https://miro.medium.com/v2/resize:fit:786/1*5LD5iGAjBFRKD2KZ6GQlUg.png)
+*Result CLI*
+
+## Reference 
+- [wasm-pack documentation](https://github.com/wasm-bindgen/wasm-pack)
+- [Compiling from Rust to WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Rust_to_Wasm)
