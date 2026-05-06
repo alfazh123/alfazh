@@ -1,32 +1,8 @@
-import { gsap } from "gsap";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation } from "react-router";
 import { menu } from "~/utils/data";
 
 export default function Navbar() {
-	const navigate = useNavigate();
 	const location = useLocation();
-
-	function handleLocationChange(location: string) {
-		const tl = gsap.timeline({
-			onComplete: () => {
-				navigate(location);
-			},
-		});
-
-		tl.to("#body", {
-			opacity: 0,
-			duration: 0.4,
-			ease: "power2.inOut",
-		})
-			.call(() => {
-				navigate(location);
-			})
-			.to("#body", {
-				opacity: 1,
-				duration: 0.4,
-				ease: "power2.inOut",
-			});
-	}
 
 	return (
 		<>

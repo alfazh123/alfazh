@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PostCard from "./post-card";
+import { ArrowUpRight } from "lucide-react";
 
 const postsModule = import.meta.glob("../posts/*.mdx", { eager: true });
 
@@ -33,19 +34,30 @@ export default function PostList({ home }: { home?: boolean }) {
 					<div className="rounded-lg w-full justify-center mb-8 md:h-80 h-fit">
 						<h2 className="text-6xl font-bold md:mb-4 mb-8">Selected Writes</h2>
 					</div>
-					{posts.slice(0, 2).map((post, id) => (
-						<div
-							className={`w-full ${id % 2 === 0 ? "justify-end" : "justify-start"} flex`}
-							key={id}>
-							<PostCard
-								title={post.title}
-								link={`/blog/${post.slug}`}
-								date={post.date}
-								topics={post.tags || []}
-								className={`max-w-96 w-full`}
-							/>
-						</div>
-					))}
+					{posts
+						.sort((a, b) => b.date.localeCompare(a.date))
+						.slice(0, 2)
+						.map((post, id) => (
+							<div
+								className={`w-full ${id % 2 === 0 ? "justify-end" : "justify-start"} flex`}
+								key={id}>
+								<PostCard
+									title={post.title}
+									link={`/blog/${post.slug}`}
+									date={post.date}
+									topics={post.tags || []}
+									className={`max-w-96 w-full`}
+								/>
+							</div>
+						))}
+					<div className="flex w-full justify-end items-end md:h-80 h-fit">
+						<a
+							href="/blog"
+							className="group flex gap-1 hover:gap-2 text-end md:text-6xl text-4xl font-bold md:mb-4 mb-8">
+							Blog Page
+							<ArrowUpRight className="w-12 h-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-200 ease-in-out" />
+						</a>
+					</div>
 				</div>
 			) : (
 				<div className="flex flex-col gap-4 mt-20 w-full">
