@@ -1,29 +1,37 @@
+import clsx from "clsx";
+
 export default function PostCard({
 	title,
 	link,
 	date,
 	topics,
-	className,
+	layout = "grid",
 }: {
 	title: string;
 	link: string;
 	date: string;
 	topics: string[];
-	className?: string;
+	layout?: "grid" | "list";
 }) {
 	return (
 		<a
 			href={link}
 			rel="noopener noreferrer"
-			className={`group relative p-4 flex flex-col justify-between items-center text-center transition-transform duration-300 aspect-4/3 ${className ?? ""} bg-amber-200`}>
-			<div className="w-full rounded-lg font-mono">
+			className={clsx(
+				`group relative flex flex-col`,
+				`${layout === "grid" ? "aspect-4/3 max-w-96 justify-between items-center text-center p-4 bg-amber-200" : "w-full hover:bg-amber-200/50"}`,
+				`transition-transform duration-300`,
+			)}>
+			<div
+				className={`${layout === "list" && "hidden"} w-full rounded-lg font-mono`}>
 				<p className="text-gray-500 text-sm">{date}</p>
 			</div>
-			<div className="gochi-hand-regular w-full px-12">
+			<div
+				className={`gochi-hand-regular w-full ${layout === "grid" ? "px-12" : ""}`}>
 				<h3 className="text-4xl group-hover:underline">{title}</h3>
 			</div>
 			<div>
-				<div className="flex gap-2 mx-auto justify-end">
+				<div className="flex gap-2 mx-auto">
 					{topics.map((topic, id) => (
 						<div
 							key={id}
@@ -34,7 +42,9 @@ export default function PostCard({
 				</div>
 			</div>
 
-			<div className="absolute -top-5 w-30 h-10 bg-slate-200/50 z-20" />
+			<div
+				className={`${layout === "list" && "hidden"} absolute -top-5 w-30 h-10 bg-slate-200/50 z-20`}
+			/>
 		</a>
 	);
 }
