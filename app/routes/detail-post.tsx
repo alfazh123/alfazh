@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import BlogBanner from "~/components/blog-banner";
+import clsx from "clsx";
 
 interface FrontMatter {
 	title: string;
 	date: string;
 	tags?: string[];
+	bannerImgUrl: string;
 	slug: string;
 }
 
@@ -29,13 +32,24 @@ export default function DetailPost() {
 	// console.log(content);
 
 	return (
-		<div className="relative prose prose-headings:mx-auto prose-headings:max-w-2xl prose-headings:w-full prose-p:mx-auto prose-p:max-w-2xl prose-p:w-full prose-p:text-lg prose-p:mb-0 prose-img:mb-0 prose-code:before:content-none prose-code:after:content-none prose-img:rounded-lg prose-img:border mt-20 flex flex-col justify-center min-h-screen max-w-4xl w-full mx-auto px-8 mb-20">
-			{/* <h1 className="text-4xl font-bold">Blog</h1> */}
-			{/* 3. Panggil layaknya komponen React biasa */}
-			<div className="absolute md:flex hidden top-0 right-0 w-30 h-10 bg-amber-200 rotate-12 z-10 items-center justify-center">
-				{frontMatter?.date}
+		<div>
+			{frontMatter?.bannerImgUrl && (
+				<BlogBanner imgUrl={frontMatter?.bannerImgUrl} />
+			)}
+
+			<div
+				className={clsx(
+					"prose prose-headings:mx-auto prose-headings:max-w-2xl prose-headings:w-full",
+					"prose-p:mx-auto prose-p:max-w-2xl prose-p:w-full prose-p:text-lg prose-p:mb-0 prose-img:mb-0 prose-img:rounded-lg prose-img:border",
+					"prose-code:before:content-none prose-code:after:content-none",
+					"prose-ul:mx-auto prose-ul:max-w-2xl prose-ul:w-full prose-ol:mx-auto prose-ol:max-w-2xl prose-ol:w-full prose-li:mb-0",
+					"relative mt-20 flex flex-col justify-center min-h-screen max-w-4xl w-full mx-auto px-8 mb-20",
+				)}>
+				<div className="absolute md:flex hidden top-0 right-0 w-30 h-10 bg-amber-200 rotate-12 z-10 items-center justify-center">
+					{frontMatter?.date}
+				</div>
+				{Content ? <Content /> : null}
 			</div>
-			{Content ? <Content /> : null}
 		</div>
 	);
 }
