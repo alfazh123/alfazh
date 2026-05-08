@@ -22,13 +22,15 @@
 
 html,
 body {
-  /* @apply bg-white dark:bg-gray-950; */
+  cursor: url("/cursor/normal.svg"), auto;
+}
 
-  /* @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  } */
-  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-  
+a {
+  cursor: url("/cursor/pointer.svg"), auto;
+}
+
+a[target="_blank"] {
+  cursor: url("/cursor/target-blank.svg"), auto;
 }
 
 .limelight-regular {
