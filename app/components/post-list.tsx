@@ -26,30 +26,28 @@ export default function PostList({ home }: { home?: boolean }) {
 		Object.entries(postsModule).forEach(([path, module], id) => {
 			const { title, date, tags } = module.frontmatter || {};
 			const slug = path.split("/").pop()?.replace(".mdx", "") || "";
-			if (home) {
-				if (id === 2) return;
-				setPosts((prev) => [...prev, { title, date, tags, slug }]);
-			} else {
-				setPosts((prev) => [...prev, { title, date, tags, slug }]);
-				const year = date.split(" ").at(-1);
-				const postData = { title, date, tags, slug };
-				setListPosts((prev) => {
-					const existingYear = prev.find(
-						(item) => item.year === parseInt(year),
+			setPosts((prev) => [...prev, { title, date, tags, slug }]);
+			const year = date.split(" ").at(-1);
+			const postData = { title, date, tags, slug };
+			setListPosts((prev) => {
+				const existingYear = prev.find((item) => item.year === parseInt(year));
+				if (existingYear) {
+					return prev.map((item) =>
+						item.year === parseInt(year)
+							? { ...item, posts: [...item.posts, postData] }
+							: item,
 					);
-					if (existingYear) {
-						return prev.map((item) =>
-							item.year === parseInt(year)
-								? { ...item, posts: [...item.posts, postData] }
-								: item,
-						);
-					} else {
-						return [...prev, { year: parseInt(year), posts: [postData] }];
-					}
-				});
-			}
+				} else {
+					return [...prev, { year: parseInt(year), posts: [postData] }];
+				}
+			});
 		});
 
+		if (home) {
+			setPosts((posts) =>
+				posts.sort((a, b) => b.date.localeCompare(a.date)).slice(1),
+			);
+		}
 		return () => {
 			setPosts([]);
 		};
@@ -61,7 +59,7 @@ export default function PostList({ home }: { home?: boolean }) {
 				className={clsx(
 					"md:max-w-4xl mx-auto",
 					`${home && "grid md:grid-cols-2 grid-cols-1 md:gap-0 gap-14 justify-center py-20 mt-0"}`,
-					`flex flex-col gap-10 w-full mt-20`,
+					`flex flex-col gap-10 w-full`,
 				)}>
 				<div
 					className={`${home ? "flex" : "hidden"} rounded-lg w-full justify-center mb-8 md:h-80 h-fit`}>
@@ -80,7 +78,7 @@ export default function PostList({ home }: { home?: boolean }) {
 				)}
 				{layout === "grid" &&
 					posts
-						.sort((a, b) => b.date.localeCompare(a.date))
+						// .sort((a, b) => b.date.localeCompare(a.date))
 						.map((post, id) => (
 							<div
 								className={`w-full ${id % 2 === 0 && layout === "grid" ? "justify-end" : "justify-start"} flex`}

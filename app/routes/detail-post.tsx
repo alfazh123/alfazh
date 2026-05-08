@@ -45,7 +45,7 @@ export default function DetailPost() {
 					"prose-ul:mx-auto prose-ul:max-w-2xl prose-ul:w-full prose-ol:mx-auto prose-ol:max-w-2xl prose-ol:w-full prose-li:mb-0",
 					"relative mt-20 flex flex-col justify-center min-h-screen max-w-4xl w-full mx-auto px-8 mb-20",
 				)}>
-				<div className="absolute md:flex hidden top-0 right-0 w-30 h-10 bg-amber-200 rotate-12 z-10 items-center justify-center">
+				<div className="absolute md:flex hidden top-0 right-0 w-fit px-2 h-10 bg-amber-200 rotate-12 z-10 items-center justify-center">
 					{frontMatter?.date}
 				</div>
 				{Content ? <Content /> : null}
