@@ -16,3 +16,11 @@ export default function HeroIndex() {
 		</div>
 	);
 }
+
+export function Hero({ title }: { title: string }) {
+	return (
+		<div className="h-[30vh] max-w-4xl flex py-8 items-center">
+			<h1 className="md:text-8xl text-6xl font-bold mb-4">{title}</h1>
+		</div>
+	);
+}
