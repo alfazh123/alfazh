@@ -12,14 +12,9 @@ interface Post {
 	slug: string;
 }
 
-interface PostListProps {
-	year: number;
-	posts: Post[];
-}
-
 export default function PostList({ home }: { home?: boolean }) {
 	const [posts, setPosts] = useState<Post[]>([]);
-	const [listPosts, setListPosts] = useState<PostListProps[]>([]);
+	const [mapPosts, setMapPosts] = useState<Map<number, Post[]>>(new Map());
 	const [layout, setLayout] = useState<"grid" | "list">("grid");
 
 	useEffect(() => {
@@ -29,16 +24,12 @@ export default function PostList({ home }: { home?: boolean }) {
 			setPosts((prev) => [...prev, { title, date, tags, slug }]);
 			const year = date.split(" ").at(-1);
 			const postData = { title, date, tags, slug };
-			setListPosts((prev) => {
-				const existingYear = prev.find((item) => item.year === parseInt(year));
-				if (existingYear) {
-					return prev.map((item) =>
-						item.year === parseInt(year)
-							? { ...item, posts: [...item.posts, postData] }
-							: item,
-					);
+			setMapPosts((prev) => {
+				if (prev?.has(year)) {
+					const existingPosts = prev.get(year) || [];
+					return new Map(prev).set(year, [...existingPosts, postData]);
 				} else {
-					return [...prev, { year: parseInt(year), posts: [postData] }];
+					return new Map(prev).set(year, [postData]);
 				}
 			});
 		});
@@ -93,27 +84,28 @@ export default function PostList({ home }: { home?: boolean }) {
 							</div>
 						))}
 
-				{layout === "list" &&
-					listPosts
-						.sort((a, b) => b.year - a.year)
-						.map((postList, id) => (
-							<div key={id}>
-								<h2 className="text-4xl font-bold mb-4">{postList.year}</h2>
-								<div className="flex flex-col gap-4">
-									{postList.posts
-										.sort((a, b) => b.date.localeCompare(a.date))
-										.map((post, id) => (
-											<PostCard
-												title={post.title}
-												link={`/blog/${post.slug}`}
-												date={post.date}
-												topics={post.tags || []}
-												layout={layout}
-											/>
-										))}
+				{layout === "list" && (
+					<div className="flex flex-col gap-8">
+						{Array.from(mapPosts, ([year, post]) => ({ year, post })).map(
+							(item, id) => (
+								<div key={id}>
+									<h2 className="text-4xl font-bold">{item.year}</h2>
+									{item.post.map((post, id) => (
+										<PostCard
+											key={id}
+											title={post.title}
+											link={`/blog/${post.slug}`}
+											date={post.date}
+											topics={post.tags || []}
+											layout={layout}
+										/>
+									))}
 								</div>
-							</div>
-						))}
+							),
+						)}
+					</div>
+				)}
+
 				<div
 					className={`${home ? "flex" : "hidden"} w-full justify-end items-end md:h-80 h-fit`}>
 					<a
