@@ -33,6 +33,10 @@ a[target="_blank"] {
   cursor: url("/cursor/target-blank.svg"), auto;
 }
 
+.cursor-tooltip {
+  cursor: url("/cursor/tooltip.svg"), auto;
+}
+
 .limelight-regular {
   font-family: "Limelight", sans-serif;
   font-weight: 400;
