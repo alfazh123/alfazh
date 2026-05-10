@@ -8,6 +8,9 @@ tags: [
 ]
 ---
 
+import Tooltip from '../components/tooltip';
+import Figure from '../components/figure';
+
 # Build WASM package with Rust
 
 Website usage in environmental development is now common, like Adobe that used to run only in desktop application now able to run in website environment, another example is Figma, Capcut, Code editor, or Image editor application.
@@ -75,8 +78,9 @@ wasm-pack publish
 
 If success publish package the command line will look like this.
 
-![Result CLI](https://miro.medium.com/v2/resize:fit:786/1*5LD5iGAjBFRKD2KZ6GQlUg.png)
-*Result CLI*
+<Tooltip text='Result CLI'>
+  <Figure url='https://miro.medium.com/v2/resize:fit:786/1*5LD5iGAjBFRKD2KZ6GQlUg.png' text='result cli' />
+</Tooltip>
 
 ## Reference 
 - [wasm-pack documentation](https://github.com/wasm-bindgen/wasm-pack)
