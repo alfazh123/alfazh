@@ -1,13 +1,14 @@
 import { useLocation } from "react-router";
 import { menu } from "~/utils/data";
+import Tooltip from "./tooltip";
 
-export default function Navbar() {
+export default function Navbar({ handleOpenCP }: { handleOpenCP: () => void }) {
 	const location = useLocation();
 
 	return (
 		<>
-			<nav className="fixed top-0 right-0 w-fit z-50 p-4">
-				<ul className="flex gap-4">
+			<nav className="fixed top-0 right-0 w-fit z-10 px-4">
+				<ul className="flex items-center gap-4">
 					{menu.map((item) => (
 						<li key={item.name} className="relative">
 							<a
@@ -24,6 +25,15 @@ export default function Navbar() {
 							)}
 						</li>
 					))}
+					<li onClick={handleOpenCP}>
+						<Tooltip text="Search" side="left">
+							<img
+								src="/command-pallete/magnifying-glass.svg"
+								alt="command-pallete"
+								className="w-5 h-5"
+							/>
+						</Tooltip>
+					</li>
 				</ul>
 			</nav>
 		</>

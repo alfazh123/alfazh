@@ -11,22 +11,27 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import CommandPallete from "./components/command-pallete";
+import { useCommandPallete } from "./hook/useCommandPallete";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
+	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
+	{
+		rel: "preconnect",
+		href: "https://fonts.gstatic.com",
+		crossOrigin: "anonymous",
+	},
+	{
+		rel: "stylesheet",
+		href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+	},
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  return (
+	const { isOpen, handleCloseCommandPallete, handleOpenCommandPallete } =
+		useCommandPallete();
+
+	return (
 		<html lang="en">
 			<head>
 				<meta charSet="utf-8" />
@@ -36,12 +41,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			</head>
 			<body>
 				<div id="body">
+					<CommandPallete
+						show={isOpen}
+						handleOpen={handleOpenCommandPallete}
+						handleClose={handleCloseCommandPallete}
+					/>
 					{children}
 					<Footer />
 				</div>
 				<ScrollRestoration />
 				<Scripts />
-				<Navbar />
+				<Navbar handleOpenCP={handleOpenCommandPallete} />
 				<style>
 					@import
 					url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gochi+Hand&display=swap');
