@@ -43,7 +43,7 @@ export default function PostCard({
 			</div>
 
 			<div
-				className={`${layout === "list" && "hidden"} absolute -top-5 w-30 h-10 bg-slate-200/50 z-20`}
+				className={`${layout === "list" && "hidden"} absolute -top-5 w-30 h-10 bg-slate-200/50 z-10`}
 			/>
 		</a>
 	);

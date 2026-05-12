@@ -36,7 +36,7 @@ export default function PostList({ home }: { home?: boolean }) {
 
 		if (home) {
 			setPosts((posts) =>
-				posts.sort((a, b) => b.date.localeCompare(a.date)).slice(1),
+				posts.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 2),
 			);
 		}
 		return () => {
@@ -69,7 +69,7 @@ export default function PostList({ home }: { home?: boolean }) {
 				)}
 				{layout === "grid" &&
 					posts
-						// .sort((a, b) => b.date.localeCompare(a.date))
+						.sort((a, b) => b.date.localeCompare(a.date))
 						.map((post, id) => (
 							<div
 								className={`w-full ${id % 2 === 0 && layout === "grid" ? "justify-end" : "justify-start"} flex`}
