@@ -1,4 +1,4 @@
-import { Hero } from "~/components/hero-index";
+import { Hero } from "~/components/hero";
 import ProjectCard from "~/components/project-card";
 import { projects } from "~/utils/data";
 

@@ -1,4 +1,4 @@
-import { Hero } from "~/components/hero-index";
+import { Hero } from "~/components/hero";
 import PostList from "~/components/post-list";
 
 export default function Post() {

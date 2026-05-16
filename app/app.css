@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -20,7 +22,6 @@
   font-style: normal;
 }
 
-html,
 body {
   cursor: url("/cursor/normal.svg"), auto;
 }
@@ -30,10 +31,6 @@ body {
 }
 
 .cursor-pointer {
-  cursor: url("/cursor/pointer.svg"), auto;
-}
-
-img {
   cursor: url("/cursor/pointer.svg"), auto;
 }
 
@@ -61,15 +58,48 @@ h1, h2, h3, h4, h5 {
   cursor: url("/cursor/text.svg"), auto;
 }
 
+.cursor-pointer {
+  cursor: url("/cursor/pointer.svg"), auto;
+}
+
+/* dark cursor */
+
+.dark {
+  cursor: url("/dark/cursor/normal.svg"), auto;
+}
+
+.dark a {
+  cursor: url("/dark/cursor/pointer.svg"), auto;
+}
+
+.dark a[target="_blank"] {
+  cursor: url("/dark/cursor/target-blank.svg"), auto;
+}
+
+.dark p {
+  cursor: url("/dark/cursor/text.svg"), auto;
+}
+
+.dark h1, h2, h3, h4, h5 {
+  cursor: url("/dark/cursor/text.svg"), auto;
+}
+
+.dark .cursor-tooltip {
+  cursor: url("/dark/cursor/tooltip.svg"), auto
+}
+
+.dark .cursor-text {
+  cursor: url("/dark/cursor/text.svg"), auto;
+}
+
+.dark .cursor-pointer {
+  cursor: url("/dark/cursor/pointer.svg"), auto;
+}
+
 .limelight-regular {
   font-family: "Limelight", sans-serif;
   font-weight: 400;
   font-style: normal;
-}
-
-/* ...existing code... */
-.page-slide-in {
-  animation: slideInFromRight 500ms ease-out both;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -90,26 +120,7 @@ h1, h2, h3, h4, h5 {
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: oklch(0.7 0.04 250);
   /* cursor: url("/cursor/hand.svg"), auto; */
-}
-
-body::-webkit-scrollbar {
-  width: 10px;
-  height: 8px;
-}
-
-body::-webkit-scrollbar-track {
-  background: transparent;  
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: oklch(0.8 0.02 250);
-  border-radius: 20px;     
-  border: 2px solid white;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background-color: oklch(0.7 0.04 250);
-}
+} */
 
 @keyframes slideInFromRight {
   from {

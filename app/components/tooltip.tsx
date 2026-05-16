@@ -28,14 +28,6 @@ export default function Tooltip({
 			cursorElement.style.left =
 				side === "right" ? `${x + 10}px` : `${x - 50}px`;
 			cursorElement.style.top = `${y + 10}px`;
-
-			console.log(x, y);
-			console.log(
-				side === "right" ? `${x + 10}px` : `${x - 20}px`,
-				`${y + 10}px`,
-			);
-
-			console.log("a", cursorElement.style.left, cursorElement.style.left);
 		};
 
 		element.addEventListener("mousemove", mouseMove);
@@ -49,7 +41,7 @@ export default function Tooltip({
 		<div className="group relative cursor-tooltip" ref={component}>
 			{children}
 			<div
-				className="group-hover:flex hidden absolute bg-black text-white px-1 rounded gochi-hand-regular"
+				className="group-hover:flex hidden absolute bg-black text-white dark:bg-white dark:text-black px-1 rounded gochi-hand-regular"
 				ref={cursor}>
 				{text}
 			</div>
