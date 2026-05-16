@@ -2,15 +2,9 @@ import { useEffect, useState } from "react";
 import PostCard from "./post-card";
 import { ArrowUpRight } from "lucide-react";
 import clsx from "clsx";
+import type { Post, PostModuleProps } from "~/type";
 
 const postsModule = import.meta.glob("../posts/*.mdx", { eager: true });
-
-interface Post {
-	title: string;
-	date: string;
-	tags?: string[];
-	slug: string;
-}
 
 export default function PostList({ home }: { home?: boolean }) {
 	const [posts, setPosts] = useState<Post[]>([]);
@@ -19,10 +13,12 @@ export default function PostList({ home }: { home?: boolean }) {
 
 	useEffect(() => {
 		Object.entries(postsModule).forEach(([path, module], id) => {
-			const { title, date, tags } = module.frontmatter || {};
+			const postModule = module as PostModuleProps;
+
+			const { title, date, tags } = postModule.frontmatter || {};
 			const slug = path.split("/").pop()?.replace(".mdx", "") || "";
 			setPosts((prev) => [...prev, { title, date, tags, slug }]);
-			const year = date.split(" ").at(-1);
+			const year = Number(date?.split(" ").at(-1));
 			const postData = { title, date, tags, slug };
 			setMapPosts((prev) => {
 				if (prev?.has(year)) {
@@ -36,7 +32,12 @@ export default function PostList({ home }: { home?: boolean }) {
 
 		if (home) {
 			setPosts((posts) =>
-				posts.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 2),
+				posts
+					.sort((a, b) => {
+						if (!a.date || !b.date) return 0;
+						return b.date.localeCompare(a.date);
+					})
+					.slice(0, 2),
 			);
 		}
 		return () => {
@@ -54,7 +55,9 @@ export default function PostList({ home }: { home?: boolean }) {
 				)}>
 				<div
 					className={`${home ? "flex" : "hidden"} rounded-lg w-full justify-center mb-8 md:h-80 h-fit`}>
-					<h2 className="text-6xl font-bold md:mb-4 mb-8">Selected Writes</h2>
+					<h2 className="text-6xl font-bold md:mb-4 mb-8 dark:text-white">
+						Selected Writes
+					</h2>
 				</div>
 				{!home && (
 					<button
@@ -63,13 +66,18 @@ export default function PostList({ home }: { home?: boolean }) {
 						<img
 							src={`/${layout === "grid" ? "grid" : "list"}.svg`}
 							alt="Toggle Layout"
-							className="w-8 h-8"
+							className="w-8 h-8 dark:hidden"
+						/>
+						<img
+							src={`/dark/${layout === "grid" ? "grid" : "list"}.svg`}
+							alt="Toggle Layout"
+							className="w-8 h-8 dark:flex"
 						/>
 					</button>
 				)}
 				{layout === "grid" &&
 					posts
-						.sort((a, b) => b.date.localeCompare(a.date))
+						.sort((a, b) => b.date?.localeCompare(a.date))
 						.map((post, id) => (
 							<div
 								className={`w-full ${id % 2 === 0 && layout === "grid" ? "justify-end" : "justify-start"} flex`}
@@ -89,7 +97,9 @@ export default function PostList({ home }: { home?: boolean }) {
 						{Array.from(mapPosts, ([year, post]) => ({ year, post })).map(
 							(item, id) => (
 								<div key={id}>
-									<h2 className="text-4xl font-bold">{item.year}</h2>
+									<h2 className="text-4xl font-bold dark:text-white">
+										{item.year}
+									</h2>
 									{item.post.map((post, id) => (
 										<PostCard
 											key={id}
@@ -110,7 +120,7 @@ export default function PostList({ home }: { home?: boolean }) {
 					className={`${home ? "flex" : "hidden"} w-full justify-end items-end md:h-80 h-fit`}>
 					<a
 						href="/blog"
-						className="group flex gap-1 hover:gap-2 text-end md:text-6xl text-4xl font-bold md:mb-4 mb-8">
+						className="group flex gap-1 hover:gap-2 text-end md:text-6xl text-4xl font-bold md:mb-4 mb-8 dark:text-white">
 						Blog Page
 						<ArrowUpRight className="w-12 h-12 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-200 ease-in-out" />
 					</a>
