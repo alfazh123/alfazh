@@ -13,6 +13,8 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import CommandPallete from "./components/command-pallete";
 import { useCommandPallete } from "./hook/useCommandPallete";
+import { ThemeProvider, useTheme } from "./hook/ThemeContext";
+import type { ReactNode } from "react";
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -27,9 +29,11 @@ export const links: Route.LinksFunction = () => [
 	},
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function AppContent({ children }: { children: React.ReactNode }) {
 	const { isOpen, handleCloseCommandPallete, handleOpenCommandPallete } =
 		useCommandPallete();
+
+	const { theme } = useTheme();
 
 	return (
 		<html lang="en">
@@ -39,16 +43,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Meta />
 				<Links />
 			</head>
-			<body>
-				<div id="body">
-					<CommandPallete
-						show={isOpen}
-						handleOpen={handleOpenCommandPallete}
-						handleClose={handleCloseCommandPallete}
-					/>
-					{children}
-					<Footer />
-				</div>
+			<body className={`${theme === "dark" ? "dark" : ""} dark:bg-zinc-800`}>
+				<CommandPallete
+					show={isOpen}
+					handleOpen={handleOpenCommandPallete}
+					handleClose={handleCloseCommandPallete}
+				/>
+				{children}
+				<Footer />
 				<ScrollRestoration />
 				<Scripts />
 				<Navbar handleOpenCP={handleOpenCommandPallete} />
@@ -58,6 +60,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				</style>
 			</body>
 		</html>
+	);
+}
+
+export function Layout({ children }: { children: ReactNode }) {
+	return (
+		<ThemeProvider>
+			<AppContent>{children}</AppContent>
+		</ThemeProvider>
 	);
 }
 
