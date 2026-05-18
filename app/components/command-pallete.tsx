@@ -138,7 +138,9 @@ export default function CommandPallete({
 	return (
 		<div
 			className={`w-full h-screen backdrop-blur-md z-20 bg-slate-300/20 ${show ? "fixed" : "hidden"}`}>
-			<div className="relative flex justify-center items-center h-screen">
+			<div
+				className="relative flex justify-center items-center h-screen"
+				onClick={handleClose}>
 				<div className="absolute top-40">
 					<p className="text-xl text-slate-500">
 						<span className="px-2 bg-slate-200 rounded">Shift</span> +{" "}
