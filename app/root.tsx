@@ -43,7 +43,8 @@ export function AppContent({ children }: { children: React.ReactNode }) {
 				<Meta />
 				<Links />
 			</head>
-			<body className={`${theme === "dark" ? "dark" : ""} dark:bg-zinc-800`}>
+			<body
+				className={`${theme === "dark" ? "dark" : ""} dark:bg-zinc-800 relative`}>
 				<CommandPallete
 					show={isOpen}
 					handleOpen={handleOpenCommandPallete}
