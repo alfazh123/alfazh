@@ -1,0 +1,61 @@
+---
+title: I Like Hotkeys
+date: 17 May 2026
+tags: [
+    JavaScript
+]
+bannerImgUrl: /blog-banner/keys.png
+---
+
+# I Like Hotkeys
+
+In this content i will descript how we can use hotkeys in website and why i like hotkeys maybe not just like but love hotkeys.
+
+So basically hotkeys is a keyboard shortcut, you can use single key or combination of key in your keyboard to run a program on your operating system or your application. As an example when you want to save something you may use `Ctrl` + `s` or using `Ctrl` + `z` to undo your mistake in your file or program that you just built, why i love hotkey is because i think is simple and fast thing to do when i want to do something. 
+
+And then i saw this post on [X](https://x.com) a portfolio by [dany](https://x.com/danywander) that you can use hotkeys for changing theme on the website and i think i will recreate the hotkeys method in my portfolio project.
+<div className='flex justify-center'>
+<>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">y&#39;all been asking for a rainy and moonlight modes.<br/>i made them.
+<br /><br />if you&#39;re on desktop, press<br />[D] for day mode,<br />[S] for sunny mode,<br />[N] for night mode,<br />[M] for moonlight mode,<br />[R] for rainy mode or<br />[C] to crash the website — and [C] again to restore it.<br /><br />if you’re on mobile, just… <a href="https://t.co/4Gq8yaqrBn">pic.twitter.com/4Gq8yaqrBn</a>
+</p>&mdash; dany (@danywander) 
+<a href="https://twitter.com/danywander/status/2038581883982782969?ref_src=twsrc%5Etfw">March 30, 2026</a>
+</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</>
+</div>
+
+In this application you can use hotkeys method for open Command pallete by clicking `'k'` in your keyboard, `'Shift` + `k'` to close Command pallete, and you can switch light and dark theme of website by pressing `'n'` for **dark theme** and `'l'` for **light theme**. And how i can make that happen? so basically we can use JavaScript API or Web API with name KeyboardEvent in our application, so the way it work is by KeyboardEvent will record all your interaction with your keyboard and in the event listener build function that you want to do when you press a single or some of key in your keyboard, for example look code bellow.
+
+```JavaScript
+window.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === 'k') {
+        handleOpenCommandPallete();
+    }
+})
+```
+
+That function is an exapmle for open command pallete by pressing `k` in your keyboard. And how when you want to use a combination keys, you can use the same method but in If statement you can add another key like bellow.
+
+```JavaScript
+window.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === 'k' && e.key === 'l') {
+        {/* some of command */}
+    }
+})
+```
+
+If you want to use `Shift`, `Alt`, or `Ctrl` key it will be different that using numeric or alphabet key, either using `e.key === 'key'` you can using `e.shiftKey`, `e.ctrlKey`, and `e.altKey`. So the function will be like this.
+
+```JavaScript
+window.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === 'k' && e.shiftKey) {
+        {/* some of command */}
+    }
+})
+```
+
+## Conclusion
+
+So hotkeys basically is a shortcut to run a program in your system operation or your application, and you can build for your web application by using JavaScript API or Web API by calling a command in event listener `"keydown"` by using \
+`(e.key === {alphabet || numeric})` or using `e.shift`, `e.ctrlKey` and `e.altKey`. 
