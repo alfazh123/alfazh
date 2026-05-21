@@ -17,7 +17,7 @@ export default function Tooltip({
 		const element = component.current;
 		const cursorElement = cursor.current;
 
-		if (!element || !cursorElement) return;
+		if (!element || !cursorElement || !window) return;
 
 		const mouseMove = (e: MouseEvent) => {
 			const rect = element.getBoundingClientRect();
@@ -26,7 +26,7 @@ export default function Tooltip({
 			const y = e.clientY - rect.top;
 
 			cursorElement.style.left =
-				side === "right" ? `${x + 10}px` : `${x - 50}px`;
+				window.innerWidth / 2 > e.clientX ? `${x + 10}px` : `${x - 50}px`;
 			cursorElement.style.top = `${y + 10}px`;
 		};
 
