@@ -19,7 +19,7 @@ export default function PostCard({
 			rel="noopener noreferrer"
 			className={clsx(
 				`group relative flex flex-col`,
-				`${layout === "grid" ? "aspect-4/3 max-w-96 justify-between items-center text-center p-4 bg-amber-200" : "w-full hover:bg-amber-200/50"}`,
+				`${layout === "grid" ? "aspect-4/3 max-w-96 w-full justify-between items-center text-center p-4 bg-amber-200" : "w-full hover:bg-amber-200/50 dark:text-white"}`,
 				`transition-transform duration-300`,
 			)}>
 			<div
@@ -35,7 +35,7 @@ export default function PostCard({
 					{topics.map((topic, id) => (
 						<div
 							key={id}
-							className="text-gray-600 font-mono px-2 py-1 rounded text-sm">
+							className={`text-gray-600 font-mono px-2 py-1 rounded text-sm ${layout === "list" && "dark:text-slate-300"}`}>
 							{topic}
 						</div>
 					))}

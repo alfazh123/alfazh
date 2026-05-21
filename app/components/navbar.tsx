@@ -8,7 +8,7 @@ export default function Navbar({ handleOpenCP }: { handleOpenCP: () => void }) {
 
 	return (
 		<>
-			<nav className="absolute top-0 right-0 w-full z-10 px-4">
+			<nav className="fixed top-0 right-0 w-full z-10 px-4">
 				<ul className="flex items-center gap-4 w-full justify-between">
 					{menu.map((item) => (
 						<li key={item.name} className="relative">

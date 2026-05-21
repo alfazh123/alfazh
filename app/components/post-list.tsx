@@ -33,10 +33,9 @@ export default function PostList({ home }: { home?: boolean }) {
 		if (home) {
 			setPosts((posts) =>
 				posts
-					.sort((a, b) => {
-						if (!a.date || !b.date) return 0;
-						return b.date.localeCompare(a.date);
-					})
+					.sort(
+						(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+					)
 					.slice(0, 2),
 			);
 		}
@@ -77,7 +76,9 @@ export default function PostList({ home }: { home?: boolean }) {
 				)}
 				{layout === "grid" &&
 					posts
-						.sort((a, b) => b.date?.localeCompare(a.date))
+						.sort(
+							(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+						)
 						.map((post, id) => (
 							<div
 								className={`w-full ${id % 2 === 0 && layout === "grid" ? "justify-end" : "justify-start"} flex`}
@@ -93,26 +94,31 @@ export default function PostList({ home }: { home?: boolean }) {
 						))}
 
 				{layout === "list" && (
-					<div className="flex flex-col gap-8">
-						{Array.from(mapPosts, ([year, post]) => ({ year, post })).map(
-							(item, id) => (
-								<div key={id}>
+					<div className="flex flex-col gap-10">
+						{Array.from(mapPosts, ([year, post]) => ({ year, post }))
+							.sort((a, b) => b.year - a.year)
+							.map((item, id) => (
+								<div key={id} className="flex flex-col gap-4">
 									<h2 className="text-4xl font-bold dark:text-white">
 										{item.year}
 									</h2>
-									{item.post.map((post, id) => (
-										<PostCard
-											key={id}
-											title={post.title}
-											link={`/blog/${post.slug}`}
-											date={post.date}
-											topics={post.tags || []}
-											layout={layout}
-										/>
-									))}
+									{item.post
+										.sort(
+											(a, b) =>
+												new Date(b.date).getTime() - new Date(a.date).getTime(),
+										)
+										.map((post, id) => (
+											<PostCard
+												key={id}
+												title={post.title}
+												link={`/blog/${post.slug}`}
+												date={post.date}
+												topics={post.tags || []}
+												layout={layout}
+											/>
+										))}
 								</div>
-							),
-						)}
+							))}
 					</div>
 				)}
 
