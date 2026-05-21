@@ -1,18 +1,18 @@
 export const projects = [
-    {
-        name: "Image Editor",
-        description:
-            "Image editor web app, built with React and Tailwind CSS. implementation of `rust-editor` package",
-        link: "https://github.com/alfazh123/image-editor",
-        year: 2025,
-    },
-    {
-        name: "PathXplorer",
-        description:
-            "Mobile app for exploring interest and talent of high school students, built with Kotlin.",
-        link: "https://github.com/PathXplorer-C242-PS289",
-        year: 2024,
-    },
+	{
+		name: "Image Editor",
+		description:
+			"Image editor web app, built with React and Tailwind CSS. implementation of `rust-editor` package",
+		link: "https://github.com/alfazh123/image-editor",
+		year: 2025,
+	},
+	{
+		name: "PathXplorer",
+		description:
+			"Mobile app for exploring interest and talent of high school students, built with Kotlin.",
+		link: "https://github.com/PathXplorer-C242-PS289",
+		year: 2024,
+	},
 ];
 
 export const writes = [
@@ -53,4 +53,46 @@ export const menu = [
 	{ name: "About", icon: "/navbar/about.svg", href: "/about" },
 	{ name: "Projects", icon: "/navbar/project.svg", href: "/projects" },
 	{ name: "Blog", icon: "/navbar/blog.svg", href: "/blog" },
+];
+
+export const navigation = [
+	{
+		name: "Home",
+		link: "/",
+	},
+	{
+		name: "About",
+		link: "/about",
+	},
+	{
+		name: "Project",
+		link: "/projects",
+	},
+	{
+		name: "Blog",
+		link: "/blog",
+	},
+];
+
+export const socials = [
+	{
+		name: "Email",
+		link: "mailto:alfazh.work@gmail.com",
+	},
+	{
+		name: "Github",
+		link: "https://github.com/alfazh123",
+	},
+	{
+		name: "Likedin",
+		link: "https://www.linkedin.com/in/ahmd-mufahras-li-alfazh-assardew",
+	},
+	{
+		name: "Medium",
+		link: "https://medium.com/@alfazh291",
+	},
+	{
+		name: "Instagram",
+		link: "https://instagram.com/ahmd_alfazh",
+	},
 ];
