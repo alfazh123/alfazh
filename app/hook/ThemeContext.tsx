@@ -5,7 +5,7 @@ import type { ThemeContextProp } from "~/type";
 const ThemeContext = createContext<ThemeContextProp | undefined>(undefined);
 
 export function ThemeProvider({children}: {children: ReactNode}) {
-    const [theme, setTheme] =useState<"" | "dark">("");
+	const [theme, setTheme] = useState<"" | "dark">("");
     const location = useLocation();
 
     useEffect(() => {

@@ -14,7 +14,8 @@ import Footer from "./components/footer";
 import CommandPallete from "./components/command-pallete";
 import { useCommandPallete } from "./hook/useCommandPallete";
 import { ThemeProvider, useTheme } from "./hook/ThemeContext";
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
+import { useKeyboard } from "./hook/useKeyboard";
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -29,11 +30,23 @@ export const links: Route.LinksFunction = () => [
 	},
 ];
 
+export function meta({}: Route.MetaArgs) {
+	return [
+		{ title: "Alfazh" },
+		{ name: "description", content: "Alfazh's Portfolio" },
+	];
+}
+
 export function AppContent({ children }: { children: React.ReactNode }) {
 	const { isOpen, handleCloseCommandPallete, handleOpenCommandPallete } =
 		useCommandPallete();
 
-	const { theme } = useTheme();
+	const { theme, setLight, setDark } = useTheme();
+
+	const { changeLight, changeDark } = useKeyboard();
+
+	changeLight(setLight, theme);
+	changeDark(setDark, theme);
 
 	return (
 		<html lang="en">
