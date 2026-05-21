@@ -3,25 +3,21 @@ import CommandPalleteSection from "./command-pallete-section";
 import { useTheme } from "~/hook/ThemeContext";
 import { ArrowUpRight } from "lucide-react";
 import type { PostModuleProps, PostProps } from "~/type";
-import { useKeyboard } from "~/hook/useKeyboard";
 import { navigation, socials } from "~/utils/data";
 
 const postsModule = import.meta.glob("../posts/*.mdx", { eager: true });
 
 export default function CommandPallete({
 	show,
-	handleOpen,
 	handleClose,
 }: {
 	show: boolean;
-	handleOpen: () => void;
 	handleClose: () => void;
 }) {
 	const [search, setSearch] = useState<string>("");
 	const [post, setPost] = useState<PostProps[]>([]);
 
 	const { setLight, setDark } = useTheme();
-	const { toggleCommandPallete } = useKeyboard();
 
 	useEffect(() => {
 		Object.entries(postsModule).forEach(([path, module], id) => {
@@ -36,8 +32,6 @@ export default function CommandPallete({
 			setPost([]);
 		};
 	}, []);
-
-	toggleCommandPallete(show, handleOpen, handleClose);
 
 	const tools = [
 		{

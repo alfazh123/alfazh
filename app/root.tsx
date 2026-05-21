@@ -38,15 +38,18 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export function AppContent({ children }: { children: React.ReactNode }) {
-	const { isOpen, handleCloseCommandPallete, handleOpenCommandPallete } =
-		useCommandPallete();
+	const { show, handleOpen, handleClose } = useCommandPallete();
 
 	const { theme, setLight, setDark } = useTheme();
 
-	const { changeLight, changeDark } = useKeyboard();
-
-	changeLight(setLight, theme);
-	changeDark(setDark, theme);
+	useKeyboard({
+		theme,
+		show,
+		setLight,
+		setDark,
+		handleOpen,
+		handleClose,
+	});
 
 	return (
 		<html lang="en">
@@ -58,16 +61,12 @@ export function AppContent({ children }: { children: React.ReactNode }) {
 			</head>
 			<body
 				className={`${theme === "dark" ? "dark" : ""} dark:bg-zinc-800 relative`}>
-				<CommandPallete
-					show={isOpen}
-					handleOpen={handleOpenCommandPallete}
-					handleClose={handleCloseCommandPallete}
-				/>
+				<CommandPallete show={show} handleClose={handleClose} />
 				{children}
 				<Footer />
 				<ScrollRestoration />
 				<Scripts />
-				<Navbar handleOpenCP={handleOpenCommandPallete} />
+				<Navbar handleOpenCP={handleOpen} />
 				<style>
 					@import
 					url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gochi+Hand&display=swap');

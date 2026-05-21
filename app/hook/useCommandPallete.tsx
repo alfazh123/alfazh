@@ -1,21 +1,21 @@
 import { useState } from "react";
 
 export function useCommandPallete() {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [show, setShow] = useState<boolean>(false);
 
-    const handleOpenCommandPallete = () => {
-			setIsOpen(true);
+		const handleOpen = () => {
+			setShow(true);
 			document.body.classList.add("no-scroll");
 		};
 
-		const handleCloseCommandPallete = () => {
-			setIsOpen(false);
+		const handleClose = () => {
+			setShow(false);
 			document.body.classList.remove("no-scroll");
 		};
 
-    return {
-        isOpen,
-        handleOpenCommandPallete,
-        handleCloseCommandPallete,
-    }
+		return {
+			show,
+			handleOpen,
+			handleClose,
+		};
 }
