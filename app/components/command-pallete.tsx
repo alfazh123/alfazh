@@ -3,6 +3,8 @@ import CommandPalleteSection from "./command-pallete-section";
 import { useTheme } from "~/hook/ThemeContext";
 import { ArrowUpRight } from "lucide-react";
 import type { PostModuleProps, PostProps } from "~/type";
+import { useKeyboard } from "~/hook/useKeyboard";
+import { navigation, socials } from "~/utils/data";
 
 const postsModule = import.meta.glob("../posts/*.mdx", { eager: true });
 
@@ -19,10 +21,9 @@ export default function CommandPallete({
 	const [post, setPost] = useState<PostProps[]>([]);
 
 	const { setLight, setDark } = useTheme();
+	const { toggleCommandPallete } = useKeyboard();
 
 	useEffect(() => {
-		if (!window) return;
-
 		Object.entries(postsModule).forEach(([path, module], id) => {
 			const postModule = module as PostModuleProps;
 
@@ -31,71 +32,12 @@ export default function CommandPallete({
 			setPost((prev) => [...prev, { name: title, link: slug }]);
 		});
 
-		function handleHotKeys(e: KeyboardEvent) {
-			if (show === false) {
-				if (e.key === "k") {
-					e.preventDefault();
-					handleOpen();
-
-					document.body.classList.add("no-scroll");
-				}
-			} else {
-				if (e.shiftKey && e.key.toLocaleLowerCase() === "k") {
-					handleClose();
-					document.body.classList.remove("no-scroll");
-				}
-			}
-		}
-
-		window.addEventListener("keydown", handleHotKeys);
-
 		return () => {
-			window.removeEventListener("keydown", handleHotKeys);
 			setPost([]);
 		};
-	}, [show]);
+	}, []);
 
-	const navigation = [
-		{
-			name: "Home",
-			link: "/",
-		},
-		{
-			name: "About",
-			link: "/about",
-		},
-		{
-			name: "Project",
-			link: "/projects",
-		},
-		{
-			name: "Blog",
-			link: "/blog",
-		},
-	];
-
-	const socials = [
-		{
-			name: "Email",
-			link: "mailto:alfazh.work@gmail.com",
-		},
-		{
-			name: "Github",
-			link: "https://github.com/alfazh123",
-		},
-		{
-			name: "Likedin",
-			link: "https://www.linkedin.com/in/ahmd-mufahras-li-alfazh-assardew",
-		},
-		{
-			name: "Medium",
-			link: "https://medium.com/@alfazh291",
-		},
-		{
-			name: "Instagram",
-			link: "https://instagram.com/ahmd_alfazh",
-		},
-	];
+	toggleCommandPallete(show, handleOpen, handleClose);
 
 	const tools = [
 		{
