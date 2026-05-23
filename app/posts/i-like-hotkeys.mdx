@@ -25,7 +25,7 @@ And then i saw this post on [X](https://x.com) a portfolio by [dany](https://x.c
 </>
 </div>
 
-In this application you can use hotkeys method for open Command pallete by clicking `'k'` in your keyboard, `'Shift` + `k'` to close Command pallete, and you can switch light and dark theme of website by pressing `'n'` for **dark theme** and `'l'` for **light theme**. And how i can make that happen? so basically we can use JavaScript API or Web API with name KeyboardEvent in our application, so the way it work is by KeyboardEvent will record all your interaction with your keyboard and in the event listener build function that you want to do when you press a single or some of key in your keyboard, for example look code bellow.
+In this application you can use hotkeys method for open Command pallete by clicking `'k'` in your keyboard, `'Shift` + `k'` to close Command pallete, you can switch light and dark theme of website by pressing `'n'` for **dark theme** and `'l'` for **light theme**, then there is page piano in this website on that page you can play piano with number of keyboard. And how i can make that happen? so basically we can use JavaScript API or Web API with name KeyboardEvent in our application, so the way it work is by KeyboardEvent will record all your interaction with your keyboard and in the event listener build function that you want to do when you press a single or some of key in your keyboard, for example look code bellow.
 
 ```JavaScript
 window.addEventListener("keydown", (e: KeyboardEvent) => {
@@ -55,7 +55,13 @@ window.addEventListener("keydown", (e: KeyboardEvent) => {
 })
 ```
 
+As an advice to using hotkeys in React you can make your own React Hooks so you can make your code more clean and easy to maintain, for example you can look to this [repository](https://github.com/alfazh123/alfazh/blob/main/app/hook/useKeyboard.tsx) and you can look how to properly make your own hook to this [documentation](https://react.dev/learn/reusing-logic-with-custom-hooks).
+
 ## Conclusion
 
 So hotkeys basically is a shortcut to run a program in your system operation or your application, and you can build for your web application by using JavaScript API or Web API by calling a command in event listener `"keydown"` by using \
 `(e.key === {alphabet || numeric})` or using `e.shift`, `e.ctrlKey` and `e.altKey`. 
+
+## Reference 
+- [KeyboardEvent](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent)
+- [Reusing Logic with Custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks)

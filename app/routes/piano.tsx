@@ -8,13 +8,15 @@ export default function Labs() {
     usePiano()
 
     return (
-        <div className="flex flex-col gap-10 w-screen h-[55vh] justify-center items-center" ref={element}>
-            <PianoBoard />
-            <div className="text-center">
-                <p>Play piano with number</p>
-                <p>play with number 1 - 7 for white key</p>
-                <p>play with number q, w, e, r, t for black key</p>
-            </div>
-        </div>
-    )
+			<div
+				className="flex flex-col gap-10 w-screen h-[55vh] justify-center items-center"
+				ref={element}>
+				<PianoBoard />
+				<div className="text-center dark:text-white">
+					<p>Play piano with number</p>
+					<p>play with number 1 - 7 for white key</p>
+					<p>play with number q, w, e, r, t for black key</p>
+				</div>
+			</div>
+		);
 }

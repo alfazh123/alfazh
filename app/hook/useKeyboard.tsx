@@ -39,11 +39,11 @@ export function useKeyboard({
 				setDark();
 			}
 
-			if (show) {
-				document.body.classList.add("no-scroll");
-			} else {
-				document.body.classList.remove("no-scroll");
-			}
+			// if (show) {
+			// 	document.body.classList.add("no-scroll");
+			// } else {
+			// 	document.body.classList.remove("no-scroll");
+			// }
 		}
 
 		window.addEventListener("keydown", (e: KeyboardEvent) => {
