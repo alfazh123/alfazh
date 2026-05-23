@@ -54,7 +54,6 @@ export default function CommandPallete({
 		sectionMenu: navigation,
 		search: search,
 		title: "Navigation",
-		icon: "/command-pallete/link.svg",
 	};
 
 	const propSocial = {
@@ -84,7 +83,9 @@ export default function CommandPallete({
 						Command Pallete
 					</p>
 				</div>
-				<div className="absolute top-50 bottom-50 flex flex-col max-w-2xl w-full h-fit bg-slate-100 px-4 py-2 rounded-2xl shadow-xl">
+				<div
+					className="absolute top-50 bottom-50 flex flex-col max-w-2xl w-full h-fit bg-slate-100 px-4 py-2 rounded-2xl shadow-xl"
+					onClick={(e) => e.stopPropagation()}>
 					<div className="flex gap-2 justify-center items-center py-4">
 						<label htmlFor="search-bar">
 							<img
@@ -138,7 +139,43 @@ export default function CommandPallete({
 									</div>
 								))}
 						</>
-						<CommandPalleteSection props={propNav} />
+
+						<>
+							{propNav.sectionMenu.filter((menu) =>
+								menu.name?.toLowerCase().includes(propNav.search.toLowerCase()),
+							).length != 0 && (
+								<div>
+									<h4 className="text-xl font-semibold">{propNav.title}</h4>
+								</div>
+							)}
+							<div className="flex w-full justify-center">
+								{propNav.sectionMenu
+									.filter((menu) =>
+										menu.name
+											?.toLowerCase()
+											.includes(propNav.search.toLowerCase()),
+									)
+									.map((menu, id) => (
+										<a
+											key={id}
+											href={menu.link}
+											className="flex justify-between w-fit hover:bg-slate-50 px-2 py-3 rounded-md">
+											<div className="flex flex-col gap-4">
+												<div className="flex justify-center items-center p-1 rounded ">
+													<img
+														src={menu.icon}
+														alt="pages"
+														className="w-8 h-8"
+													/>
+												</div>
+												<div>{menu.name}</div>
+											</div>
+										</a>
+									))}
+							</div>
+						</>
+
+						{/* <CommandPalleteSection props={propNav} /> */}
 						<CommandPalleteSection props={propPosts} />
 						<CommandPalleteSection props={propSocial} />
 					</div>

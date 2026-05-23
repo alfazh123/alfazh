@@ -59,18 +59,27 @@ export const navigation = [
 	{
 		name: "Home",
 		link: "/",
+		icon: "/command-pallete/home.svg",
 	},
 	{
 		name: "About",
 		link: "/about",
+		icon: "/command-pallete/about.svg",
 	},
 	{
 		name: "Project",
 		link: "/projects",
+		icon: "/command-pallete/project.svg",
 	},
 	{
 		name: "Blog",
 		link: "/blog",
+		icon: "/command-pallete/blog.svg",
+	},
+	{
+		name: "Piano",
+		link: "/piano",
+		icon: "/command-pallete/piano.svg",
 	},
 ];
 
