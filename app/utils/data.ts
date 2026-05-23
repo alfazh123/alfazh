@@ -96,3 +96,62 @@ export const socials = [
 		link: "https://instagram.com/ahmd_alfazh",
 	},
 ];
+
+export const keysPiano = [
+	{
+		id: "1",
+		tone: "C",
+	},
+	{
+		id: "2",
+		tone: "D",
+	},
+	{
+		id: "3",
+		tone: "E",
+	},
+	{
+		id: "4",
+		tone: "F",
+	},
+	{
+		id: "5",
+		tone: "A",
+	},
+	{
+		id: "6",
+		tone: "B",
+	},
+	{
+		id: "7",
+		tone: "C",
+	},
+];
+
+export const blackKeysPiano = [
+	{
+		id: "q",
+		position: "left-15",
+		tone: "C#",
+	},
+	{
+		id: "w",
+		position: "left-36",
+		tone: "Eb",
+	},
+	{
+		id: "e",
+		position: "left-80",
+		tone: "F#",
+	},
+	{
+		id: "r",
+		position: "left-100",
+		tone: "G#",
+	},
+	{
+		id: "t",
+		position: "left-121",
+		tone: "Bb",
+	},
+];

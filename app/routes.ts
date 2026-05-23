@@ -6,4 +6,5 @@ export default [
 	route("projects", "routes/projects.tsx"),
 	route("blog", "routes/post.tsx"),
 	route("blog/:id", "routes/detail-post.tsx"),
+	route("piano", "routes/piano.tsx"),
 ] satisfies RouteConfig;
