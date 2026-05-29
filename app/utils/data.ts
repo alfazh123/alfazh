@@ -51,7 +51,7 @@ export const contacts = [
 export const menu = [
 	{ name: "Home", icon: "/navbar/home.svg", href: "/" },
 	{ name: "About", icon: "/navbar/about.svg", href: "/about" },
-	{ name: "Projects", icon: "/navbar/project.svg", href: "/projects" },
+	{ name: "Project", icon: "/navbar/project.svg", href: "/project" },
 	{ name: "Blog", icon: "/navbar/blog.svg", href: "/blog" },
 ];
 
