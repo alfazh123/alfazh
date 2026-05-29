@@ -60,7 +60,7 @@ export function AppContent({ children }: { children: React.ReactNode }) {
 				<Links />
 			</head>
 			<body
-				className={`${theme === "dark" ? "dark" : ""} dark:bg-zinc-800 relative`}>
+				className={`${theme === "dark" ? "dark" : ""} dark:bg-zinc-800 bg-zinc-100 relative`}>
 				<CommandPallete show={show} handleClose={handleClose} />
 				{children}
 				<Footer />
