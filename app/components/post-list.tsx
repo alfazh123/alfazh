@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import PostCard from "./post-card";
 import { ArrowUpRight } from "lucide-react";
 import clsx from "clsx";
-import type { Post, PostModuleProps } from "~/type";
+import type { PostProps, PostModuleProps } from "~/type";
 
 const postsModule = import.meta.glob("../posts/*.mdx", { eager: true });
 
 export default function PostList({ home }: { home?: boolean }) {
-	const [posts, setPosts] = useState<Post[]>([]);
-	const [mapPosts, setMapPosts] = useState<Map<number, Post[]>>(new Map());
+	const [posts, setPosts] = useState<PostProps[]>([]);
+	const [mapPosts, setMapPosts] = useState<Map<number, PostProps[]>>(new Map());
 	const [layout, setLayout] = useState<"grid" | "list">("grid");
 
 	useEffect(() => {

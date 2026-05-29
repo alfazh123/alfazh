@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import BlogBanner from "~/components/blog-banner";
-import type { FrontMatter, PostModuleProps } from "~/type";
+import type { PostFrontMatter, PostModuleProps } from "~/type";
 import BlogContent from "~/components/blog-content";
 
 export default function DetailPost() {
@@ -9,7 +9,7 @@ export default function DetailPost() {
 	const slug = location.pathname.split("/").pop();
 
 	const contentModule = import.meta.glob("../posts/*.mdx", { eager: true });
-	const [frontMatter, setFrontMatter] = useState<FrontMatter>();
+	const [frontMatter, setFrontMatter] = useState<PostFrontMatter>();
 	const [Content, setContent] = useState<React.ComponentType | null>(null);
 
 	useEffect(() => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CommandPalleteSection from "./command-pallete-section";
 import { useTheme } from "~/hook/ThemeContext";
 import { ArrowUpRight } from "lucide-react";
-import type { PostModuleProps, PostProps } from "~/type";
+import type { PostModuleProps, PostListProps } from "~/type";
 import { navigation, socials } from "~/utils/data";
 
 const postsModule = import.meta.glob("../posts/*.mdx", { eager: true });
@@ -15,7 +15,7 @@ export default function CommandPallete({
 	handleClose: () => void;
 }) {
 	const [search, setSearch] = useState<string>("");
-	const [post, setPost] = useState<PostProps[]>([]);
+	const [post, setPost] = useState<PostListProps[]>([]);
 
 	const { setLight, setDark } = useTheme();
 

@@ -1,4 +1,4 @@
-export interface FrontMatter {
+export interface PostFrontMatter {
 	title: string;
 	date: string;
 	tags: string[];
@@ -6,37 +6,49 @@ export interface FrontMatter {
 }
 
 export interface PostModuleProps {
-	frontmatter: FrontMatter;
+	frontmatter: PostFrontMatter;
 	default: React.ComponentType;
 }
 
-export interface PostProps {
+export interface PostListProps {
 	name: string;
 	link: string;
 }
 
-export interface Post {
+export interface PostProps {
 	title: string;
 	date: string;
 	tags?: string[];
 	slug: string;
 }
 
+export interface ProjectFrontMatter {
+	name: string;
+	description: string;
+	year: number;
+	banner: string;
+}
+
+export interface ProjectModuleProps {
+	frontmatter: ProjectFrontMatter;
+	default: React.ComponentType;
+}
+
 export interface SectionCommand {
-    name: string;
-    link: string;
+	name: string;
+	link: string;
 }
 
 export interface CommandPalleteProps {
-    sectionMenu: SectionCommand[];
-    search: string;
-    title: string;
-    icon: string;
+	sectionMenu: SectionCommand[];
+	search: string;
+	title: string;
+	icon: string;
 }
 
 export interface ThemeContextProp {
-    theme: "" | "dark";
-    togleTheme: () => void;
-    setLight: () => void;
-    setDark: () => void;
+	theme: "" | "dark";
+	togleTheme: () => void;
+	setLight: () => void;
+	setDark: () => void;
 }
