@@ -9,7 +9,7 @@ export default function Labs() {
 
     return (
 			<div
-				className="flex flex-col gap-10 w-screen h-[55vh] justify-center items-center"
+				className="flex flex-col gap-10 w-screen justify-center items-center"
 				ref={element}>
 				<PianoBoard />
 				<div className="text-center dark:text-white">
