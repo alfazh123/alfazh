@@ -25,8 +25,9 @@ export interface PostProps {
 export interface ProjectFrontMatter {
 	name: string;
 	description: string;
-	year: number;
+	year: string;
 	banner: string;
+	icon: string;
 }
 
 export interface ProjectModuleProps {
