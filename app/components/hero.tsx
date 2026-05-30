@@ -9,6 +9,20 @@ export default function HeroIndex() {
 					I'm a FrontEnd Developer Experience in React, NextJs, and Tailwind
 					CSS.
 				</div>
+				<a
+					rel="noopener"
+					href="https://drive.google.com/file/d/1ecHLIG0Q5nu49mqcfwwnVLHa5g9NFRc-/view?usp=sharing"
+					target="_blank"
+					className="flex gap-2 w-fit hover:rotate-24 transition-all duration-300 mt-4">
+					<Tooltip text="CV">
+						<img alt="docs" src="/docs.svg" className="flex dark:hidden w-6" />
+						<img
+							alt="docs"
+							src="/dark/docs.svg"
+							className="dark:flex hidden w-6"
+						/>
+					</Tooltip>
+				</a>
 			</div>
 			<div className="absolute -bottom-10 md:-right-10 -right-32">
 				<Tooltip text="plant">
