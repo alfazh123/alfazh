@@ -42,9 +42,9 @@ As you can see on that component had parameter text, color, and onclick function
 export default function Page() {
     return (
         {/* */}
-        <Button text={'Click'} color={'bg-[#e17100]'} onclick={() => console.log('click button')} />
-        <Button text={'Hi'} color={'bg-[#2996ff]'} onclick={() => console.log('Hi')} />
-        <Button text={'Hello there'} color={'bg-[#ff2a55]'} onclick={() => console.log('Hello There')} />
+        <Button text={'Click'} color={'bg-[#e17100]'} onclick={() => alert('click button')} />
+        <Button text={'Hi'} color={'bg-[#2996ff]'} onclick={() => alert('Hi')} />
+        <Button text={'Hello there'} color={'bg-[#ff2a55]'} onclick={() => alert('Hello There')} />
         {/* */}
     )
 }
@@ -53,9 +53,9 @@ export default function Page() {
 From code above we will get return like this.
 
 <div className="flex gap-4 max-w-4xl w-full mx-auto justify-center items-center mt-10">
-    <Button text={'Click'} color={'bg-[#e17100]'} onclick={() => console.log('click button')} />
-    <Button text={'Hi'} color={'bg-[#2996ff]'} onclick={() => console.log('Hi')} />
-    <Button text={'Hello there'} color={'bg-[#ff2a55]'} onclick={() => console.log('Hello There')} />
+    <Button text={'Click'} color={'bg-[#e17100]'} onclick={() => alert('click button')} />
+    <Button text={'Hi'} color={'bg-[#2996ff]'} onclick={() => alert('Hi')} />
+    <Button text={'Hello there'} color={'bg-[#ff2a55]'} onclick={() => alert('Hello There')} />
 </div>
 
 Same like other function you can make default value for your component so you can use that component by just write parameter that you want to change, for example you can make default color and text for button component, so you just call component like this.
@@ -75,9 +75,9 @@ export default function Button({
 ```
 
 <div className="flex gap-4 max-w-4xl w-full mx-auto justify-center items-center mt-10">
-    <Button color={'bg-[#e17100]'} onclick={() => console.log('click button')} />
-    <Button text={'Hi'} onclick={() => console.log('Hi')} />
-    <Button text={'Hello there'} onclick={() => console.log('Hello There')} />
+    <Button color={'bg-[#e17100]'} onclick={() => alert('click button')} />
+    <Button text={'Hi'} onclick={() => alert('Hi')} />
+    <Button text={'Hello there'} onclick={() => alert('Hello There')} />
 </div>
 
 Button component is just simple example of implementation of reusable component, you can make more complex component like card, banner, list of item, and many more. One thing you sould keep when make reusable component is you need to make your component flexible and customizable in different condition.
