@@ -23,13 +23,13 @@ export default function About() {
 
 					<p>
 						Sometimes i make a projects, you can check it out in the{" "}
-						<a href="/projects" className="cursor-pointer underline">
+						<a href="/project" className="cursor-pointer underline">
 							project page
 						</a>
 						. And Someof times i make a blog, you can check it out on my{" "}
 						<a
 							rel="noopener"
-							href="https://medium.com/@alfazh291"
+							href="https://medium.com/@ahmd_alfazh"
 							target="_blank"
 							className="cursor-pointer underline">
 							Medium profile

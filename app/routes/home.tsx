@@ -14,7 +14,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
 	return (
-		<div className="home md:max-w-4xl mx-auto px-4 overflow-clip">
+		<div className="home px-4 overflow-clip">
 			<HeroIndex />
 			<ProjectList home />
 			<PostList home />
