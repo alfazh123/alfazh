@@ -15,7 +15,7 @@ export default function HeroIndex() {
 					<img
 						src="/plant.svg"
 						alt="Ahmd Alfazh"
-						className="w-80 object-cover mx-auto mt-4 bg-clip-text"
+						className="w-80 object-cover mx-auto mt-4"
 					/>
 				</Tooltip>
 			</div>

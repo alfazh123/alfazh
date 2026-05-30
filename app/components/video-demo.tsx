@@ -16,6 +16,7 @@ export default function VideoDemo({
         if (!element) return;
 
         if (playbackRate) {
+            element.play();
             element.playbackRate = playbackRate;
         }
     }, [])
