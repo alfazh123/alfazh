@@ -25,8 +25,12 @@ export default function Tooltip({
 			const x = e.clientX - rect.left;
 			const y = e.clientY - rect.top;
 
+			const cursorDimension = cursorElement.getBoundingClientRect();
+
 			cursorElement.style.left =
-				window.innerWidth / 2 > e.clientX ? `${x + 10}px` : `${x - 50}px`;
+				window.innerWidth / 2 > e.clientX
+					? `${x + 10}px`
+					: `${x - cursorDimension.width}px`;
 			cursorElement.style.top = `${y + 10}px`;
 		};
 

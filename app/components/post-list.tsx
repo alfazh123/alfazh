@@ -49,7 +49,7 @@ export default function PostList({ home }: { home?: boolean }) {
 			<div
 				className={clsx(
 					"md:max-w-4xl mx-auto",
-					`${home && "grid md:grid-cols-2 grid-cols-1 md:gap-0 gap-14 justify-center py-20 mt-0"}`,
+					`${home && "grid md:grid-cols-2 grid-cols-1 md:gap-0 gap-14 justify-center py-20 mt-0 mb-20"}`,
 					`flex flex-col gap-10 w-full`,
 				)}>
 				<div
