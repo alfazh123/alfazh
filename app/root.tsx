@@ -36,7 +36,11 @@ export function meta({}: Route.MetaArgs) {
 		{ name: "description", content: "Alfazh's Portfolio" },
 		{ property: "og:title", content: "Alfazh" },
 		{ property: "og:description", content: "Alfazh's Portfolio" },
-		{ property: "og:image", content: "https://porto.alfazh.dev/og/home.png" },
+		{
+			tag: "meta",
+			property: "og:image",
+			content: "https://porto.alfazh.dev/og/home.png",
+		},
 		{ property: "og:type", content: "website" },
 		{ property: "og:url", content: "https://porto.alfazh.dev" },
 	];
