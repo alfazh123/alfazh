@@ -38,7 +38,7 @@ export function meta({}: Route.MetaArgs) {
 		{ property: "og:description", content: "Alfazh's Portfolio" },
 		{ property: "og:image", content: "https://porto.alfazh.dev/og/home.png" },
 		{ property: "og:type", content: "website" },
-		{ property: "og:url", content: "https://porto.alfazh.dev.com" },
+		{ property: "og:url", content: "https://porto.alfazh.dev" },
 	];
 }
 
