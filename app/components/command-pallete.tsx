@@ -77,14 +77,19 @@ export default function CommandPallete({
 				className="relative flex justify-center items-center h-screen"
 				onClick={handleClose}>
 				<div className="absolute top-40">
-					<p className="text-xl text-slate-500">
-						<span className="px-2 bg-slate-200 rounded">Shift</span> +{" "}
-						<span className="px-2 bg-slate-200 rounded">K</span> to close
-						Command Pallete
+					<p className="md:text-xl text-slate-500 dark:text-slate-200">
+						<span className="px-2 bg-slate-200 dark:bg-slate-900 rounded">
+							Shift
+						</span>{" "}
+						+{" "}
+						<span className="px-2 bg-slate-200 dark:bg-slate-900 rounded">
+							K
+						</span>{" "}
+						to close Command Pallete
 					</p>
 				</div>
 				<div
-					className="absolute top-50 bottom-50 flex flex-col max-w-2xl w-full h-fit bg-slate-100 px-4 py-2 rounded-2xl shadow-xl"
+					className="absolute top-50 bottom-50 flex flex-col max-w-2xl w-fit h-fit bg-slate-100 px-4 py-2 rounded-2xl shadow-xl"
 					onClick={(e) => e.stopPropagation()}>
 					<div className="flex gap-2 justify-center items-center py-4">
 						<label htmlFor="search-bar">
@@ -148,7 +153,7 @@ export default function CommandPallete({
 									<h4 className="text-xl font-semibold">{propNav.title}</h4>
 								</div>
 							)}
-							<div className="flex w-full justify-center">
+							<div className="flex flex-wrap w-full justify-center">
 								{propNav.sectionMenu
 									.filter((menu) =>
 										menu.name
