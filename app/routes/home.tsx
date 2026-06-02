@@ -1,9 +1,8 @@
 import type { Route } from "./+types/home";
 import HeroIndex from "~/components/hero";
-import ProjectCard from "~/components/project-card";
-import { projects } from "~/utils/data";
 import PostList from "~/components/post-list";
 import ProjectList from "~/components/project-list";
+import Experience from "~/components/experience";
 
 export function meta({}: Route.MetaArgs) {
 	return [
@@ -18,6 +17,7 @@ export default function Home() {
 			<HeroIndex />
 			<ProjectList home />
 			<PostList home />
+			<Experience />
 		</div>
 	);
 }

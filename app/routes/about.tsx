@@ -1,5 +1,8 @@
+import Experience from "~/components/experience";
+
 export default function About() {
-    return (
+	return (
+		<div>
 			<div className="flex flex-col max-w-4xl mx-auto px-8 py-8 min-h-screen justify-center dark:text-white">
 				<div className="flex flex-col">
 					<h1 className="md:text-8xl text-6xl font-bold mb-4">About</h1>
@@ -38,5 +41,7 @@ export default function About() {
 					</p>
 				</div>
 			</div>
-		);
+			<Experience />
+		</div>
+	);
 }
