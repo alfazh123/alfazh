@@ -34,15 +34,14 @@ export function meta({}: Route.MetaArgs) {
 	return [
 		{ title: "Alfazh" },
 		{
-			tag: "meta",
-			property: "og:image",
+			name: "og:image",
 			content: "https://porto.alfazh.dev/og/home.png",
 		},
 		{ name: "description", content: "Alfazh's Portfolio" },
-		{ property: "og:title", content: "Alfazh" },
-		{ property: "og:description", content: "Alfazh's Portfolio" },
-		{ property: "og:type", content: "website" },
-		{ property: "og:url", content: "https://porto.alfazh.dev" },
+		{ name: "og:title", content: "Alfazh" },
+		{ name: "og:description", content: "Alfazh's Portfolio" },
+		{ name: "og:type", content: "website" },
+		{ name: "og:url", content: "https://porto.alfazh.dev" },
 	];
 }
 
