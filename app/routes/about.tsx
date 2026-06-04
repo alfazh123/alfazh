@@ -12,7 +12,7 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "og:image",
-			content: "http://localhost:5173/api/og?title=About%20Alfazh",
+			content: `${process.env.API_ENDPOINT}/api/og?title=About%20Alfazh`,
 		},
 		{ property: "og:type", content: "website" },
 		{ property: "og:url", content: "https://porto.alfazh.dev/about" },
@@ -28,7 +28,7 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "twitter:image",
-			content: `http://localhost:5173/api/og?title=About%20Alfazh`,
+			content: `${process.env.API_ENDPOINT}/api/og?title=About%20Alfazh`,
 		},
 	];
 }

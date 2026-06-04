@@ -14,7 +14,7 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "og:image",
-			content: "http://localhost:5173/api/og?title=Piano",
+			content: `${process.env.API_ENDPOINT}/api/og?title=Piano`,
 		},
 		{ property: "og:type", content: "website" },
 		{ property: "og:url", content: "https://porto.alfazh.dev/piano" },
@@ -30,7 +30,7 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "twitter:image",
-			content: `http://localhost:5173/api/og?title=Piano`,
+			content: `${process.env.API_ENDPOINT}/api/og?title=Piano`,
 		},
 	];
 }
