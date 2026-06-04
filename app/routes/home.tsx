@@ -15,7 +15,7 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "og:image",
-			content: `${process.env.API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
+			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
 		},
 		{ property: "og:type", content: "website" },
 		{ property: "og:url", content: "https://porto.alfazh.dev" },
@@ -31,7 +31,7 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "twitter:image",
-			content: `${process.env.API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
+			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
 		},
 	];
 }

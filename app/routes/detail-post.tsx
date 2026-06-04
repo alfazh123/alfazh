@@ -11,7 +11,7 @@ export function meta({ params }: Route.MetaArgs) {
 		{ title: `${setTitleOg({ title: params?.id, blog: true })}` },
 		{
 			property: "og:image",
-			content: `${process.env.API_ENDPOINT}/api/og?title=${setTitleOg({ title: params?.id, blog: true })}&blog=true`,
+			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=${setTitleOg({ title: params?.id, blog: true })}&blog=true`,
 		},
 		{
 			name: "description",
@@ -39,7 +39,7 @@ export function meta({ params }: Route.MetaArgs) {
 		},
 		{
 			property: "twitter:image",
-			content: `${process.env.API_ENDPOINT}/api/og?title=${setTitleOg({ title: params?.id, blog: true })}&blog=true`,
+			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=${setTitleOg({ title: params?.id, blog: true })}&blog=true`,
 		},
 	];
 }

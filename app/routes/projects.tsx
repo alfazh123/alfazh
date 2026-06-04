@@ -13,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "og:image",
-			content: `${process.env.API_ENPOINT}/api/og?title=Project%20Page`,
+			content: `${import.meta.env.VITE_API_ENPOINT}/api/og?title=Project%20Page`,
 		},
 		{ property: "og:type", content: "website" },
 		{ property: "og:url", content: "https://porto.alfazh.dev/project" },
@@ -29,7 +29,7 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "twitter:image",
-			content: `${process.env.API_ENPOINT}/api/og?title=Project%20Page`,
+			content: `${import.meta.env.VITE_API_ENPOINT}/api/og?title=Project%20Page`,
 		},
 	];
 }
