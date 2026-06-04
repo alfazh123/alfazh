@@ -1,4 +1,37 @@
 import Experience from "~/components/experience";
+import type { Route } from "../+types/root";
+
+export function meta({}: Route.MetaArgs) {
+	return [
+		{ title: "About Alfazh" },
+		{ name: "description", content: "About Alfazh" },
+		{ property: "og:title", content: "Alfazh" },
+		{
+			property: "og:description",
+			content: "About Alfazh",
+		},
+		{
+			property: "og:image",
+			content: "http://localhost:5173/api/og?title=About%20Alfazh",
+		},
+		{ property: "og:type", content: "website" },
+		{ property: "og:url", content: "https://porto.alfazh.dev/about" },
+		{ property: "twitter:card", content: "summary_large_image" },
+		{ property: "twitter:site", content: "@alfazh" },
+		{
+			property: "twitter:title",
+			content: `About Alfazh`,
+		},
+		{
+			property: "twitter:description",
+			content: `About Alfazh`,
+		},
+		{
+			property: "twitter:image",
+			content: `http://localhost:5173/api/og?title=About%20Alfazh`,
+		},
+	];
+}
 
 export default function About() {
 	return (

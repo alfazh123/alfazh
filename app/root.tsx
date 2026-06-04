@@ -30,26 +30,6 @@ export const links: Route.LinksFunction = () => [
 	},
 ];
 
-export function meta({}: Route.MetaArgs) {
-	return [
-		{ title: "Alfazh" },
-		{
-			name: "og:image",
-			property: "og:image",
-			content: "https://porto.alfazh.dev/og/home.png",
-		},
-		{ name: "description", content: "Alfazh's Portfolio" },
-		{ name: "og:title", property: "og:title", content: "Alfazh" },
-		{
-			name: "og:description",
-			property: "og:description",
-			content: "Alfazh's Portfolio",
-		},
-		{ name: "og:type", property: "og:type", content: "website" },
-		{ name: "og:url", property: "og:url", content: "https://porto.alfazh.dev" },
-	];
-}
-
 export function AppContent({ children }: { children: React.ReactNode }) {
 	const { show, handleOpen, handleClose } = useCommandPallete();
 

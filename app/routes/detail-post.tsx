@@ -3,6 +3,46 @@ import { useLocation } from "react-router";
 import BlogBanner from "~/components/blog-banner";
 import type { PostFrontMatter, PostModuleProps } from "~/type";
 import BlogContent from "~/components/blog-content";
+import type { Route } from "../+types/root";
+import { setTitleOg } from "~/hook/useOpenGraph";
+
+export function meta({ params }: Route.MetaArgs) {
+	return [
+		{ title: `${setTitleOg({ title: params?.id, blog: true })}` },
+		{
+			property: "og:image",
+			content: `http://localhost:5173/api/og?title=${setTitleOg({ title: params?.id, blog: true })}&blog=true`,
+		},
+		{
+			name: "description",
+			content: `${setTitleOg({ title: params?.id, blog: true })}, Blog by Alfazh`,
+		},
+		{
+			property: "og:title",
+			content: `${setTitleOg({ title: params?.id, blog: true })}`,
+		},
+		{
+			property: "og:description",
+			content: `${setTitleOg({ title: params?.id, blog: true })}, Blog by Alfazh`,
+		},
+		{ property: "og:type", content: "website" },
+		{ property: "og:url", content: "https://porto.alfazh.dev" },
+		{ property: "twitter:card", content: "summary_large_image" },
+		{ property: "twitter:site", content: "@alfazh" },
+		{
+			property: "twitter:title",
+			content: `${setTitleOg({ title: params?.id, blog: true })}`,
+		},
+		{
+			property: "twitter:description",
+			content: `${setTitleOg({ title: params?.id, blog: true })}, Blog by Alfazh`,
+		},
+		{
+			property: "twitter:image",
+			content: `http://localhost:5173/api/og?title=${setTitleOg({ title: params?.id, blog: true })}&blog=true`,
+		},
+	];
+}
 
 export default function DetailPost() {
 	const location = useLocation();
