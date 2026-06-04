@@ -8,4 +8,5 @@ export default [
 	route("blog", "routes/post.tsx"),
 	route("blog/:id", "routes/detail-post.tsx"),
 	route("piano", "routes/piano.tsx"),
+	route("api/og", "routes/api.og.tsx"),
 ] satisfies RouteConfig;
