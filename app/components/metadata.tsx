@@ -33,7 +33,7 @@ export function createMeta({title, description, image}: MetadataProps) {
 		{
 			property: "twitter:image",
 			// content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
-			content: { image },
+			content: `${image}`,
 		},
 		{ property: "profile:first_name", content: "Ahmd Mufahras Li" },
 		{ property: "profile:last_name", content: "Alfazh Assardew" },
