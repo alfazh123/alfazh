@@ -64,7 +64,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 					.join("")}
 			</text>
 
-			<text x="80" y="${descriptionY + 180}" font-size="28" fill="black" font-family="Arial, sans-serif">
+			<text x="80" y="${descriptionY + 180}" font-size="30" fill="black" font-family="Arial, sans-serif">
 				<tspan x="80" dy="0">
 					${blog ? "Blog by Alfazh" : ""} ${project ? "Project by Alfazh" : ""}
 				</tspan>
@@ -410,7 +410,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 	return new Response(new Uint8Array(pngBuffer), {
 		headers: {
 			"Content-Type": "image/png",
-			"Cache-Control": "no-store",
+			"Cache-Control": "public, max-age=31536000",
 		},
 	});
 }

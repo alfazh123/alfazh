@@ -3,40 +3,16 @@ import HeroIndex from "~/components/hero";
 import PostList from "~/components/post-list";
 import ProjectList from "~/components/project-list";
 import Experience from "~/components/experience";
+import { createMeta } from "~/components/metadata";
 
-export function meta({}: Route.MetaArgs) {
-	return [
-		{ title: "Alfazh" },
-		{ name: "description", content: "Alfazh's Portfolio" },
-		{ property: "og:title", content: "Alfazh" },
-		{
-			property: "og:description",
-			content: "Alfazh's Portfolio",
-		},
-		{
-			property: "og:image",
-			// content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
-			content: `/og/home.png`,
-		},
-		{ property: "og:type", content: "website" },
-		{ property: "og:url", content: "https://porto.alfazh.dev" },
-		{ property: "twitter:card", content: "summary_large_image" },
-		{ property: "twitter:site", content: "@alfazh" },
-		{
-			property: "twitter:title",
-			content: `Alfazh Portfolio`,
-		},
-		{
-			property: "twitter:description",
-			content: `Alfazh Portfolio`,
-		},
-		{
-			property: "twitter:image",
-			// content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
-			content: `/og/home.png`,
-		},
-	];
+export function meta() {
+	return createMeta({
+		title: "Ahmd Alfazh",
+		description: "Ahmd Alfazh Portfolio",
+		image: "/og/home.png",
+	});
 }
+
 
 export default function Home() {
 	return (

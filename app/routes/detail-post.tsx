@@ -5,43 +5,14 @@ import type { PostFrontMatter, PostModuleProps } from "~/type";
 import BlogContent from "~/components/blog-content";
 import type { Route } from "../+types/root";
 import { setTitleOg } from "~/hook/useOpenGraph";
+import { createMeta } from "~/components/metadata";
 
 export function meta({ params }: Route.MetaArgs) {
-	return [
-		{ title: `${setTitleOg({ title: params?.id, blog: true })}` },
-		{
-			property: "og:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=${setTitleOg({ title: params?.id, blog: true })}&blog=true`,
-		},
-		{
-			name: "description",
-			content: `${setTitleOg({ title: params?.id, blog: true })}, Blog by Alfazh`,
-		},
-		{
-			property: "og:title",
-			content: `${setTitleOg({ title: params?.id, blog: true })}`,
-		},
-		{
-			property: "og:description",
-			content: `${setTitleOg({ title: params?.id, blog: true })}, Blog by Alfazh`,
-		},
-		{ property: "og:type", content: "website" },
-		{ property: "og:url", content: "https://porto.alfazh.dev" },
-		{ property: "twitter:card", content: "summary_large_image" },
-		{ property: "twitter:site", content: "@alfazh" },
-		{
-			property: "twitter:title",
-			content: `${setTitleOg({ title: params?.id, blog: true })}`,
-		},
-		{
-			property: "twitter:description",
-			content: `${setTitleOg({ title: params?.id, blog: true })}, Blog by Alfazh`,
-		},
-		{
-			property: "twitter:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=${setTitleOg({ title: params?.id, blog: true })}&blog=true`,
-		},
-	];
+	return createMeta({
+		title: `${setTitleOg({ title: params?.id, blog: true })}`,
+		description: `${setTitleOg({ title: params?.id, blog: true })}, Blog by Alfazh`,
+		image: "/og/home.png",
+	});
 }
 
 export default function DetailPost() {

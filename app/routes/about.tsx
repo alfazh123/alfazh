@@ -1,36 +1,13 @@
 import Experience from "~/components/experience";
 import type { Route } from "../+types/root";
+import { createMeta } from "~/components/metadata";
 
 export function meta({}: Route.MetaArgs) {
-	return [
-		{ title: "About Alfazh" },
-		{ name: "description", content: "About Alfazh" },
-		{ property: "og:title", content: "Alfazh" },
-		{
-			property: "og:description",
-			content: "About Alfazh",
-		},
-		{
-			property: "og:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=About%20Alfazh`,
-		},
-		{ property: "og:type", content: "website" },
-		{ property: "og:url", content: "https://porto.alfazh.dev/about" },
-		{ property: "twitter:card", content: "summary_large_image" },
-		{ property: "twitter:site", content: "@alfazh" },
-		{
-			property: "twitter:title",
-			content: `About Alfazh`,
-		},
-		{
-			property: "twitter:description",
-			content: `About Alfazh`,
-		},
-		{
-			property: "twitter:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=About%20Alfazh`,
-		},
-	];
+	return createMeta({
+		title: "About",
+		description: "About Ahmd Mufahras Li Alfazh Assardew",
+		image: "/og/home.png",
+	});
 }
 
 export default function About() {

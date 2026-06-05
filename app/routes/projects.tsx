@@ -1,37 +1,14 @@
 import { Hero } from "~/components/hero";
 import ProjectList from "~/components/project-list";
 import type { Route } from "../+types/root";
+import { createMeta } from "~/components/metadata";
 
 export function meta({}: Route.MetaArgs) {
-	return [
-		{ title: "Project Page" },
-		{ name: "description", content: "Project Page" },
-		{ property: "og:title", content: "Blog" },
-		{
-			property: "og:description",
-			content: "Project Page",
-		},
-		{
-			property: "og:image",
-			content: `${import.meta.env.VITE_API_ENPOINT}/api/og?title=Project%20Page`,
-		},
-		{ property: "og:type", content: "website" },
-		{ property: "og:url", content: "https://porto.alfazh.dev/project" },
-		{ property: "twitter:card", content: "summary_large_image" },
-		{ property: "twitter:site", content: "@alfazh" },
-		{
-			property: "twitter:title",
-			content: `Project Page`,
-		},
-		{
-			property: "twitter:description",
-			content: `Project Page`,
-		},
-		{
-			property: "twitter:image",
-			content: `${import.meta.env.VITE_API_ENPOINT}/api/og?title=Project%20Page`,
-		},
-	];
+	return createMeta({
+		title: "Projects",
+		description: "Projects that Alfazh work on it",
+		image: "/og/home.png",
+	});
 }
 
 export default function Projects() {

@@ -2,37 +2,14 @@ import { useRef } from "react";
 import PianoBoard from "~/components/piano-board";
 import { usePiano } from "~/hook/usePiano";
 import type { Route } from "../+types/root";
+import { createMeta } from "~/components/metadata";
 
 export function meta({}: Route.MetaArgs) {
-	return [
-		{ title: "Piano" },
-		{ name: "description", content: "Piano games" },
-		{ property: "og:title", content: "Piano" },
-		{
-			property: "og:description",
-			content: "Piano games",
-		},
-		{
-			property: "og:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Piano`,
-		},
-		{ property: "og:type", content: "website" },
-		{ property: "og:url", content: "https://porto.alfazh.dev/piano" },
-		{ property: "twitter:card", content: "summary_large_image" },
-		{ property: "twitter:site", content: "@alfazh" },
-		{
-			property: "twitter:title",
-			content: `Piano`,
-		},
-		{
-			property: "twitter:description",
-			content: `Piano games`,
-		},
-		{
-			property: "twitter:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Piano`,
-		},
-	];
+	return createMeta({
+		title: "Piano",
+		description: "Piano board work with click number and alphabet",
+		image: "/og/home.png",
+	});
 }
 
 export default function Labs() {

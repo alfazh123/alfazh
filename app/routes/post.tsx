@@ -1,37 +1,14 @@
 import { Hero } from "~/components/hero";
 import PostList from "~/components/post-list";
 import type { Route } from "../+types/root";
+import { createMeta } from "~/components/metadata";
 
 export function meta({}: Route.MetaArgs) {
-	return [
-		{ title: "Blog page" },
-		{ name: "description", content: "Blog page" },
-		{ property: "og:title", content: "Blog" },
-		{
-			property: "og:description",
-			content: "Blog page",
-		},
-		{
-			property: "og:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Blog%20Page`,
-		},
-		{ property: "og:type", content: "website" },
-		{ property: "og:url", content: "https://porto.alfazh.dev/blog" },
-		{ property: "twitter:card", content: "summary_large_image" },
-		{ property: "twitter:site", content: "@alfazh" },
-		{
-			property: "twitter:title",
-			content: `Blog page`,
-		},
-		{
-			property: "twitter:description",
-			content: `Blog page`,
-		},
-		{
-			property: "twitter:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Blog%20Page`,
-		},
-	];
+	return createMeta({
+		title: "Blogs",
+		description: "Blogs that Alfazh write",
+		image: "/og/home.png",
+	});
 }
 
 export default function Post() {
