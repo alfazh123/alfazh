@@ -15,7 +15,8 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "og:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
+			// content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
+			content: `/og/home.png`,
 		},
 		{ property: "og:type", content: "website" },
 		{ property: "og:url", content: "https://porto.alfazh.dev" },
@@ -31,7 +32,8 @@ export function meta({}: Route.MetaArgs) {
 		},
 		{
 			property: "twitter:image",
-			content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
+			// content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
+			content: `/og/home.png`,
 		},
 	];
 }
