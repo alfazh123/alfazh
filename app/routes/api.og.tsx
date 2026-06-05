@@ -410,7 +410,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 	return new Response(new Uint8Array(pngBuffer), {
 		headers: {
 			"Content-Type": "image/png",
-			"Cache-Control": "public, max-age=31536000",
+			"Cache-Control": "no-store",
 		},
 	});
 }
