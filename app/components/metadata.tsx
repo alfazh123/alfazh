@@ -8,7 +8,7 @@ export function createMeta({title, description, image}: MetadataProps) {
 	return [
 		{ title: `${title}` },
 		{ name: "description", content: `${description}` },
-		{ property: "og:title", content: "Alfazh" },
+		{ property: "og:title", content: `${title}` },
 		{
 			property: "og:description",
 			content: `${description}`,

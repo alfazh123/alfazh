@@ -4,13 +4,13 @@ import BlogBanner from "~/components/blog-banner";
 import type { PostFrontMatter, PostModuleProps } from "~/type";
 import BlogContent from "~/components/blog-content";
 import type { Route } from "../+types/root";
-import { setTitleOg } from "~/hook/useOpenGraph";
+import { setTitleBlogOg } from "~/hook/useOpenGraph";
 import { createMeta } from "~/components/metadata";
 
 export function meta({ params }: Route.MetaArgs) {
 	return createMeta({
-		title: `${setTitleOg({ title: params?.id, blog: true })}`,
-		description: `${setTitleOg({ title: params?.id, blog: true })}, Blog by Alfazh`,
+		title: `${setTitleBlogOg({ title: params?.id })}`,
+		description: `${setTitleBlogOg({ title: params?.id })}, Blog by Alfazh`,
 		image: "/og/home.png",
 	});
 }

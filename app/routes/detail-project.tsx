@@ -3,14 +3,14 @@ import { useLocation } from "react-router";
 import BlogBanner from "~/components/blog-banner";
 import type { ProjectFrontMatter, ProjectModuleProps } from "~/type";
 import BlogContent from "~/components/blog-content";
-import { setTitleOg } from "~/hook/useOpenGraph";
+import { setTitleProjectOg } from "~/hook/useOpenGraph";
 import type { Route } from "../+types/root";
 import { createMeta } from "~/components/metadata";
 
 export function meta({ params }: Route.MetaArgs) {
 	return createMeta({
-		title: `${setTitleOg({ title: params?.id, blog: true })}`,
-		description: `${setTitleOg({ title: params?.id, blog: true })}, Project by Alfazh`,
+		title: `${setTitleProjectOg({ title: params?.id })}`,
+		description: `${setTitleProjectOg({ title: params?.id })}, Project by Alfazh`,
 		image: "/og/home.png",
 	});
 }
