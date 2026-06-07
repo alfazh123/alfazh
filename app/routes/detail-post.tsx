@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
-import { useLoaderData, useLocation } from "react-router";
+import { useLoaderData } from "react-router";
 import BlogBanner from "~/components/blog-banner";
-import type { PostFrontMatter, PostModuleProps } from "~/type";
+import type { PostModuleProps } from "~/type";
 import BlogContent from "~/components/blog-content";
 import type { Route } from "../+types/root";
-import { setTitleBlogOg } from "~/hook/useOpenGraph";
 import { createMeta } from "~/components/metadata";
 
 const contentModule = import.meta.glob("../posts/*.mdx", { eager: true });
 
-function findPost(slug: string): PostModuleProps {
-	for (const [path, module] of Object.entries(contentModule)) {
+function findPost(slug: string): PostModuleProps | null {
+	Object.entries(contentModule).forEach(([path, module]) => {
 		const postModule = module as PostModuleProps;
 		const fileSlug = path.split("/").pop()?.replace(".mdx", "") || "";
 		if (fileSlug === slug) {
@@ -19,15 +17,15 @@ function findPost(slug: string): PostModuleProps {
 				frontmatter: postModule.frontmatter,
 			};
 		}
-	}
-	return { default: null, frontmatter: null };
+	});
+	return null;
 }
 
 export function meta({ params }: Route.MetaArgs) {
 	const post = findPost(params?.id || "");
 
 	return createMeta({
-		title: `${post?.frontmatter?.title || "Blog Post"}, Blog by Alfazh`,
+		title: `${post?.frontmatter?.title || "Blog Post"}`,
 		description: `${post?.frontmatter?.title || "Blog Post"}, Blog by Alfazh`,
 		image: "/og/home.png",
 	});

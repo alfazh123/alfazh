@@ -6,8 +6,8 @@ export interface PostFrontMatter {
 }
 
 export interface PostModuleProps {
-	frontmatter: PostFrontMatter | null;
-	default: React.ComponentType | null;
+	frontmatter: PostFrontMatter;
+	default: React.ComponentType;
 }
 
 export interface PostListProps {
