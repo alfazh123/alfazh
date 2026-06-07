@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLoaderData, useLocation } from "react-router";
 import BlogBanner from "~/components/blog-banner";
 import type { PostFrontMatter, PostModuleProps } from "~/type";
 import BlogContent from "~/components/blog-content";
@@ -7,33 +7,42 @@ import type { Route } from "../+types/root";
 import { setTitleBlogOg } from "~/hook/useOpenGraph";
 import { createMeta } from "~/components/metadata";
 
+const contentModule = import.meta.glob("../posts/*.mdx", { eager: true });
+
+function findPost(slug: string): PostModuleProps {
+	for (const [path, module] of Object.entries(contentModule)) {
+		const postModule = module as PostModuleProps;
+		const fileSlug = path.split("/").pop()?.replace(".mdx", "") || "";
+		if (fileSlug === slug) {
+			return {
+				default: postModule.default,
+				frontmatter: postModule.frontmatter,
+			};
+		}
+	}
+	return { default: null, frontmatter: null };
+}
+
 export function meta({ params }: Route.MetaArgs) {
+	const post = findPost(params?.id || "");
+
 	return createMeta({
-		title: `${setTitleBlogOg({ title: params?.id })}`,
-		description: `${setTitleBlogOg({ title: params?.id })}, Blog by Alfazh`,
+		title: `${post?.frontmatter?.title || "Blog Post"}, Blog by Alfazh`,
+		description: `${post?.frontmatter?.title || "Blog Post"}, Blog by Alfazh`,
 		image: "/og/home.png",
 	});
 }
 
+export async function loader({ params }: Route.LoaderArgs) {
+	const project = findPost(params.id || "");
+	if (!project) throw new Response("Not Found", { status: 404 });
+	return { frontMatter: project.frontmatter, slug: params.id };
+}
+
 export default function DetailPost() {
-	const location = useLocation();
-	const slug = location.pathname.split("/").pop();
-
-	const contentModule = import.meta.glob("../posts/*.mdx", { eager: true });
-	const [frontMatter, setFrontMatter] = useState<PostFrontMatter>();
-	const [Content, setContent] = useState<React.ComponentType | null>(null);
-
-	useEffect(() => {
-		Object.entries(contentModule).forEach(([path, module]) => {
-			const postModule = module as PostModuleProps;
-
-			const fileSlug = path.split("/").pop()?.replace(".mdx", "") || "";
-			if (fileSlug === slug) {
-				setContent(() => postModule.default);
-				setFrontMatter(postModule.frontmatter);
-			}
-		});
-	}, [slug]);
+	const { frontMatter, slug } = useLoaderData<typeof loader>();
+	const post = findPost(slug || "");
+	const Content = post?.default;
 
 	return (
 		<div className="pt-20">
