@@ -15,7 +15,6 @@ export default {
 		"/blog/built-wasm-package-with-rust",
 		"/blog/i-like-hotkeys",
 		"/blog/make-reusable-component-react",
-		"/blog/what-i-like-in-my-portfolio",
 		// Dynamic projects
 		"/project/ace24",
 		"/project/image-editor",
