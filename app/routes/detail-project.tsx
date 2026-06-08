@@ -8,8 +8,7 @@ import { createMeta } from "~/components/metadata";
 const contentModule = import.meta.glob("../projects/*.mdx", { eager: true });
 
 function findProject(slug: string): ProjectModuleProps | null {
-	if (slug === "") return null;
-	Object.entries(contentModule).forEach(([path, module]) => {
+	for (const [path, module] of Object.entries(contentModule)) {
 		const projectModule = module as ProjectModuleProps;
 
 		const fileSlug = path.split("/").pop()?.replace(".mdx", "") || "";
@@ -19,7 +18,7 @@ function findProject(slug: string): ProjectModuleProps | null {
 				frontmatter: projectModule.frontmatter,
 			};
 		}
-	});
+	}
 	return null;
 }
 

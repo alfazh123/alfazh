@@ -8,7 +8,7 @@ import { createMeta } from "~/components/metadata";
 const contentModule = import.meta.glob("../posts/*.mdx", { eager: true });
 
 function findPost(slug: string): PostModuleProps | null {
-	Object.entries(contentModule).forEach(([path, module]) => {
+	for (const [path, module] of Object.entries(contentModule)) {
 		const postModule = module as PostModuleProps;
 		const fileSlug = path.split("/").pop()?.replace(".mdx", "") || "";
 		if (fileSlug === slug) {
@@ -17,7 +17,7 @@ function findPost(slug: string): PostModuleProps | null {
 				frontmatter: postModule.frontmatter,
 			};
 		}
-	});
+	}
 	return null;
 }
 
