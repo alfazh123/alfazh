@@ -22,7 +22,7 @@ export default function BlogBanner({
 				{/* <div className="absolute top-0 left-0 w-full h-full bg-black/50 rounded-xl" /> */}
 				<div className="flex flex-col top-0 left-0 w-full h-full ">
 					<h1 className="dark:text-white text-5xl font-extrabold">{title}</h1>
-					<div>{time}</div>
+					<p className="dark:text-white">{time}</p>
 				</div>
 				<div className="bottom-4 right-4 flex gap-2">
 					{github && (
