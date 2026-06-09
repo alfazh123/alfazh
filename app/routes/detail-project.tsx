@@ -44,14 +44,17 @@ export default function DetailProject() {
 
 	return (
 		<div className="pt-20">
-			{frontMatter?.banner && <BlogBanner imgUrl={frontMatter?.banner} />}
+			{frontMatter?.banner && (
+				<BlogBanner
+					imgUrl={frontMatter?.banner}
+					title={frontMatter?.name}
+					time={frontMatter?.year}
+					github={frontMatter?.github}
+					demo={frontMatter?.demo}
+				/>
+			)}
 
-			<BlogContent>
-				<div className="absolute md:flex hidden top-0 right-0 w-fit px-2 h-10 bg-amber-200 rotate-12 z-10 items-center justify-center">
-					{frontMatter?.year}
-				</div>
-				{Content ? <Content /> : null}
-			</BlogContent>
+			<BlogContent>{Content ? <Content /> : null}</BlogContent>
 		</div>
 	);
 }

@@ -28,6 +28,8 @@ export interface ProjectFrontMatter {
 	year: string;
 	banner: string;
 	icon: string;
+	github?: string;
+	demo?: string;
 }
 
 export interface ProjectModuleProps {

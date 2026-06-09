@@ -45,15 +45,13 @@ export default function DetailPost() {
 	return (
 		<div className="pt-20">
 			{frontMatter?.bannerImgUrl && (
-				<BlogBanner imgUrl={frontMatter?.bannerImgUrl} />
+				<BlogBanner
+					imgUrl={frontMatter?.bannerImgUrl}
+					time={frontMatter?.date}
+				/>
 			)}
 
-			<BlogContent>
-				<div className="absolute md:flex hidden top-0 right-0 w-fit px-2 h-10 bg-amber-200 rotate-12 z-10 items-center justify-center">
-					{frontMatter?.date}
-				</div>
-				{Content ? <Content /> : null}
-			</BlogContent>
+			<BlogContent>{Content ? <Content /> : null}</BlogContent>
 		</div>
 	);
 }
