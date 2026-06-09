@@ -6,7 +6,7 @@ export default function BlogBanner({
 	demo,
 }: {
 	imgUrl: string;
-	title?: string;
+	title: string;
 	time: string;
 	github?: string;
 	demo?: string;

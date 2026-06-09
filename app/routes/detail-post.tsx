@@ -47,6 +47,7 @@ export default function DetailPost() {
 			{frontMatter?.bannerImgUrl && (
 				<BlogBanner
 					imgUrl={frontMatter?.bannerImgUrl}
+					title={frontMatter?.title}
 					time={frontMatter?.date}
 				/>
 			)}
