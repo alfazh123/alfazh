@@ -23,7 +23,7 @@ And then i saw this post on [X](https://x.com) a portfolio by [dany](https://x.c
 </>
 </div>
 
-In this application you can use hotkeys method for open Command pallete by clicking `'k'` in your keyboard, `'Shift` + `k'` to close Command pallete, you can switch light and dark theme of website by pressing `'n'` for **dark theme** and `'l'` for **light theme**, then there is page piano in this website on that page you can play piano with number of keyboard. And how i can make that happen? so basically we can use JavaScript API or Web API with name KeyboardEvent in our application, so the way it work is by KeyboardEvent will record all your interaction with your keyboard and in the event listener build function that you want to do when you press a single or some of key in your keyboard, for example look code bellow.
+In this application you can use hotkeys method for open Command pallete by clicking `[K]` in your keyboard, `[Shift + K]` to close Command pallete, you can switch light and dark theme of website by pressing `[N]` for **dark theme** and `[]` for **light theme**, then there is page piano in this website on that page you can play piano with number of keyboard. And how i can make that happen? so basically we can use JavaScript API or Web API with name KeyboardEvent in our application, so the way it work is by KeyboardEvent will record all your interaction with your keyboard and in the event listener build function that you want to do when you press a single or some of key in your keyboard, for example look code bellow.
 
 ```JavaScript
 window.addEventListener("keydown", (e: KeyboardEvent) => {
@@ -33,7 +33,7 @@ window.addEventListener("keydown", (e: KeyboardEvent) => {
 })
 ```
 
-That function is an exapmle for open command pallete by pressing `k` in your keyboard. And how when you want to use a combination keys, you can use the same method but in If statement you can add another key like bellow.
+That function is an exapmle for open command pallete by pressing `[K]` in your keyboard. And how when you want to use a combination keys, you can use the same method but in If statement you can add another key like bellow.
 
 ```JavaScript
 window.addEventListener("keydown", (e: KeyboardEvent) => {

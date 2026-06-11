@@ -65,12 +65,12 @@ export default function PostList({ home }: { home?: boolean }) {
 						<img
 							src={`/${layout === "grid" ? "grid" : "list"}.svg`}
 							alt="Toggle Layout"
-							className="w-8 h-8 dark:hidden"
+							className="w-8 h-8 dark:hidden flex"
 						/>
 						<img
 							src={`/dark/${layout === "grid" ? "grid" : "list"}.svg`}
 							alt="Toggle Layout"
-							className="w-8 h-8 dark:flex"
+							className="w-8 h-8 dark:flex hidden"
 						/>
 					</button>
 				)}

@@ -4,11 +4,9 @@ import { useEffect, useRef } from "react";
 export default function Tooltip({
 	children,
 	text,
-	side = "right",
 }: {
 	children: React.ReactNode;
 	text: string;
-	side?: "left" | "right";
 }) {
 	const component = useRef<HTMLDivElement>(null);
 	const cursor = useRef<HTMLDivElement>(null);
