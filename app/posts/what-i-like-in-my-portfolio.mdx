@@ -1,0 +1,77 @@
+---
+title: What i like in my Portfolio
+date: 1 Juni 2026
+tags: ["'Portfolio'", "'Hotkeys'", "'Component'"]
+bannerImgUrl: /blog-banner/what-i-like-in-my-portfolio.png
+---
+
+import VideoDemo from '../components/video-demo';
+import ToolTip from '../components/tooltip';
+import Figure from '../components/figure';
+
+Lately im building my portfolio and i want to make it more personal and different from my previous portfolio, so in this content i will explain what i like in my portfolio and how i make it.
+
+## Hotkeys
+So in this portfolio had a feature that i like the most, wich is hotkeys, like other hotkeys it has function to make it easier for users to navigate or using this website. So hotkeys that i use had in two section, the first one you can use in all of pages, and the other one you just can use in [Piano page](/piano).
+
+### Global Hotkeys
+Hotkeys that you can use in all of the pages are:
+- `[N]` to change theme to Dark Mode
+- `[L]` to change theme to Light Mode
+- `[K]` to open Command Pallete
+- `[Shift + K]` to close Command Pallete
+
+I got inpired to add hotkeys feature in my portfolio from post from [Dany in X](https://x.com/danywander), in that post he said that in his portfolio he added hotkeys to make manipulation in theme of his portfolio, so i want to do the same thing in my portfolio, but i want to add more hotkeys that you can use in my portfolio, so i add hotkeys to open and close Command Pallete, because i think that feature is useful for users to navigate in my portfolio.
+
+<VideoDemo url="/blog-content/global-hotkeys.mp4" />
+
+### Piano Page Hotkeys
+
+Next this portfolio had a mini game you can open Command Pallete by pressing `[K]`, in Navigation section you can see that there is menu to open [Piano page](/piano). The first idea of this page is from youtube video that i watch, in that video there is piano that you can play by pressing number keyboard from `0-9`, the video is separated by 10 notes so you can play the piano by pressing the number keyboard. 
+
+So i want to make it in my portfolio, when you look to that page you can see there is 7 white notes and 5 black notes, so you can play the piano by pressing number keyboard from `1-7` for white notes and `Q,W,E,R,T` for black notes. So you can play the piano by pressing the number keyboard and letter keyboard.
+
+How i make this feature? i had write this in my previous content [I like Hotkeys](/blog/i-like-hotkeys), happy to share it with you.
+
+<VideoDemo url="/blog-content/piano-hotkeys.mp4" />
+
+## Command Pallete
+
+For this feature i got inspired by many website that i ever visit, and i this this feature is really useful for easier navigate and explore the website. 
+
+So i you can show Command pallete by pressing `[K]` then you can close it by pressing `[Shift + K]`. In Command pallete that i build had some sectin such as:
+- Navigation: this section is used to navigate to other page in this portfolio, such as Home, About, Projects, and Blog.
+- Theme: this section is used to switch theme in this portfolio, you can switch to Light or Dark mode by clicking the button in this section.
+- Social Media: this section is used to navigate to my social media such as Github, Linkedin, and Twitter.
+- Posts: this section is used to navigate to my blog posts.
+
+<ToolTip text='Command Pallete'>
+    <Figure url='/blog-content/command-pallete.png' width={'w-sm'} />
+</ToolTip>
+
+## Custom Cursor
+
+I think this one is not a feature just a little detail that i like in my portfolio or just improvement in user interface, so as a context almost all of **icon**, **component**, and even **cursor** in this portfolio is a custom all made by myself. For the cursor specially from ***normal***, ***pointer***, ***text***, ***target blank***, and ***tooltip*** cursor, all of them and Dark Mode version of the cursor i make in figma.
+
+How i implement is quite simple, i just export custom cursor from figma in `.png` format, then i just add it to my `.css` file like code snippet below:
+
+```css
+body {
+    cursor: url('/cursor/default.png'), auto;
+}
+
+a {
+    cursor: url('/cursor/pointer.png'), pointer;
+}
+/* and so on for other cursor */
+```
+
+<ToolTip text='Custom Cursor'>
+    <Figure url='/blog-content/custom-cursor.png' width={'w-md'} />
+</ToolTip>
+
+## Tooltip Component
+
+Lastly this portfolio had a component that i like, which is tooltip component, this component will show a floating text when you hover over the element that have this component, from this component i think is usefull because user can get more information about the element specially in figure element, and i just think that this is cool component.
+
+<VideoDemo url="/blog-content/tooltip-demo.mp4" />
