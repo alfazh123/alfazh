@@ -5,7 +5,7 @@ export default function BlogBanner({
 	github,
 	demo,
 }: {
-	imgUrl: string;
+	imgUrl?: string;
 	title: string;
 	time: string;
 	github?: string;
@@ -13,11 +13,13 @@ export default function BlogBanner({
 }) {
 	return (
 		<div>
-			<img
-				className="w-full max-w-6xl mx-auto object-cover object-top md:rounded-xl mb-10"
-				src={imgUrl}
-				alt="Blog Banner"
-			/>
+			{imgUrl && (
+				<img
+					className="w-full max-w-6xl mx-auto object-cover object-top md:rounded-xl mb-10"
+					src={imgUrl}
+					alt="Blog Banner"
+				/>
+			)}
 			<div className="w-full max-w-2xl mx-auto flex flex-col gap-2">
 				{/* <div className="absolute top-0 left-0 w-full h-full bg-black/50 rounded-xl" /> */}
 				<div className="flex flex-col top-0 left-0 w-full h-full ">

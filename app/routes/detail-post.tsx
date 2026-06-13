@@ -44,13 +44,11 @@ export default function DetailPost() {
 
 	return (
 		<div className="pt-20">
-			{frontMatter?.bannerImgUrl && (
-				<BlogBanner
-					imgUrl={frontMatter?.bannerImgUrl}
-					title={frontMatter?.title}
-					time={frontMatter?.date}
-				/>
-			)}
+			<BlogBanner
+				imgUrl={frontMatter?.bannerImgUrl}
+				title={frontMatter?.title}
+				time={frontMatter?.date}
+			/>
 
 			<BlogContent>{Content ? <Content /> : null}</BlogContent>
 		</div>
