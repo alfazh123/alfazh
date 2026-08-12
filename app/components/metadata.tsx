@@ -19,7 +19,8 @@ export function createMeta({title, description, image}: MetadataProps) {
 			content: `${image}`,
 		},
 		{ property: "og:type", content: "website" },
-		{ property: "og:url", content: "https://porto.alfazh.dev" },
+    { property: "og:url", content: "https://porto.alfazh.dev" },
+		{ property: "og:site_name", content: `${title}` },
 		{ property: "twitter:card", content: "summary_large_image" },
 		{ property: "twitter:site", content: "@alfazh" },
 		{
@@ -34,9 +35,8 @@ export function createMeta({title, description, image}: MetadataProps) {
 			property: "twitter:image",
 			// content: `${import.meta.env.VITE_API_ENDPOINT}/api/og?title=Alfazh%20Portfolio`,
 			content: `${image}`,
-		},
-		{ property: "profile:first_name", content: "Ahmd Mufahras Li" },
-		{ property: "profile:last_name", content: "Alfazh Assardew" },
+    },
+		{ property: "meta:author", content: "Ahmd Mufahras Li Alfazh Assardew"},
 		{ property: "profile:username", content: "ahmd alfazh" },
 	];
 }

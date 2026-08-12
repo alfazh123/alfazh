@@ -7,7 +7,7 @@ import { createMeta } from "~/components/metadata";
 
 export function meta() {
 	return createMeta({
-		title: "Ahmd Alfazh",
+		title: "Ahmd Mufahras Li Alfazh Assardew",
 		description: "Ahmd Alfazh Portfolio",
 		image: "/og/home.png",
 	});
